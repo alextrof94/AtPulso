@@ -747,6 +747,7 @@ namespace AtPulso
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.tbLog.Location = new System.Drawing.Point(6, 19);
 			this.tbLog.Name = "tbLog";
+			this.tbLog.ReadOnly = true;
 			this.tbLog.Size = new System.Drawing.Size(203, 20);
 			this.tbLog.TabIndex = 4;
 			// 
