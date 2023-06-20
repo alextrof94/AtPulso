@@ -6,7 +6,7 @@ It can show:
 - Time-scalled Animation (it will be beats 1.5 times/second if your heartrate is 90)
 - Chart
 
-1. Download publish.zip from Releases
+1. Download publish.zip from [https://github.com/alextrof94/AtPulso/releases](Releases)
 2. Install
 3. Pair BT device via Windows-menu (once).
 4. "Connect" device in app.
