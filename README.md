@@ -23,3 +23,10 @@ UI settings updates on the fly by reload page in browser (or widget in OBS).
 For animation you need to select webm video with length of 1 sec with 1 "beat"
 
 ![Preview1](https://github.com/alextrof94/AtPulso/blob/main/images/preview.gif)
+
+## Compatibility
+### Don't working with:
+MiBand 4/6
+
+### Working with:
+Magene H303 (chest sensor)
