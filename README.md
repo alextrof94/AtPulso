@@ -10,7 +10,7 @@ It can show:
 2. Unzip and Install
 3. Pair BT device via Windows-menu (once).
 4. "Connect" device in app.
-5. If connected and setted checkbox "Start server when connected" - copy Server-Address to OBS.
+5. If connected and checkbox "Autostart server when connected" is setted - copy Server-Address to OBS. Otherwise - first "Start" server.
 
 UI settings updates on the fly by reload page in browser (or widget in OBS).
 
