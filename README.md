@@ -7,7 +7,7 @@ It can show:
 - Chart
 
 1. Download publish.zip from [Releases](https://github.com/alextrof94/AtPulso/releases)
-2. Install
+2. Unzip and Install
 3. Pair BT device via Windows-menu (once).
 4. "Connect" device in app.
 5. If connected and setted checkbox "Start server when connected" - copy Server-Address to OBS.
