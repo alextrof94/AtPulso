@@ -6,6 +6,12 @@ It can show:
 - Time-scalled Animation (it will be beats 1.5 times/second if your heartrate is 90)
 - Chart
 
+1. Download publish.zip from Releases
+2. Install
+3. Pair BT device via Windows-menu (once).
+4. "Connect" device in app.
+5. If connected and setted checkbox "Start server when connected" - copy Server-Address to OBS.
+
 UI settings updates on the fly by reload page in browser (or widget in OBS).
 
 ![Preview2](https://github.com/alextrof94/AtPulso/blob/main/images/screenshot.jpg)
