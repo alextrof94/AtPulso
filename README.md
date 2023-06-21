@@ -26,7 +26,7 @@ For animation you need to select webm video with length of 1 sec with 1 "beat"
 
 ## Compatibility
 ### Don't working with:
-Mi Bands 4+ (they are protected from connecting to third-party applications)
+Mi Bands 4+ & Amazefits (they are protected from connecting to third-party applications)
 
 ### Working with:
 Magene H303 (chest sensor)
