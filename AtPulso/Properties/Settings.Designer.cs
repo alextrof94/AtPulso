@@ -178,5 +178,17 @@ namespace AtPulso.Properties {
                 this["BleDeviceId"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public decimal AnimationSpeedMultiplier {
+            get {
+                return ((decimal)(this["AnimationSpeedMultiplier"]));
+            }
+            set {
+                this["AnimationSpeedMultiplier"] = value;
+            }
+        }
     }
 }

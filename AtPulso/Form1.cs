@@ -20,6 +20,8 @@ namespace AtPulso
 {
 	public partial class Form1 : Form
 	{
+		private string version = "1.1";
+
 		public ObservableCollection<WatcherDevice> devices = new ObservableCollection<WatcherDevice>();
 		private HeartRateMonitor _heartRateMonitor = new HeartRateMonitor();
 
@@ -59,6 +61,7 @@ namespace AtPulso
 
 		private void Form1_Shown(object sender, EventArgs e)
 		{
+			this.Text = String.Format("AtPulso by GoodVrGames v{0}", version);
 			cbAutoConnectAndHide.Checked = Properties.Settings.Default.AutoConnectAndHideToTray;
 			cbRetryConnect.Checked = Properties.Settings.Default.RetryConnectWhenFailed;
 			cbServerAutostart.Checked = Properties.Settings.Default.AutoStartServerWhenConnected;
@@ -79,6 +82,7 @@ namespace AtPulso
 
 
 			tbAnimationPath.Text = Properties.Settings.Default.AnimationPath;
+			nudAnimSpeedMultiplier.Value = Properties.Settings.Default.AnimationSpeedMultiplier;
 
 			// we should always monitor the connection status
 			//_heartRateMonitor.ConnectionStatusChanged -= HrDeviceOnDeviceConnectionStatusChanged;
@@ -306,6 +310,12 @@ namespace AtPulso
 			tiHideOnStart.Stop();
 		}
 
+		private void nudAnimSpeedMultiplier_ValueChanged(object sender, EventArgs e)
+		{
+			Properties.Settings.Default.AnimationSpeedMultiplier = nudAnimSpeedMultiplier.Value;
+			Properties.Settings.Default.Save();
+		}
+
 		private void HrParserOnValueChanged(object sender, RateChangedEventArgs e)
 		{
 			if (!_heartRateMonitor.IsConnected)
@@ -314,9 +324,12 @@ namespace AtPulso
 			{
 				this.Invoke((MethodInvoker)delegate
 				{
-					this.Text = String.Format("{0} bpm | AtPulso by GoodVrGames", e.BeatsPerMinute);
+					if (cbTestMode.Checked)
+						lastBpm = 60;
+					else
+						lastBpm = e.BeatsPerMinute;
+					this.Text = String.Format("{1} bpm | AtPulso by GoodVrGames v{0}", version, lastBpm);
 				});
-				lastBpm = e.BeatsPerMinute;
 			}
 			catch (Exception ex) { 
 				Log(ex.Message); 
@@ -338,6 +351,7 @@ namespace AtPulso
 						tbDeviceStatus.Text = "Connected";
 						tbDeviceBattery.Text = String.Format("{0}%", device.BatteryPercent);
 
+						cbTestMode.Enabled = true;
 						buDeviceConnect.Enabled = false;
 						buDeviceGetInfo.Enabled = true;
 						buDeviceDisconnect.Enabled = true;
@@ -362,6 +376,8 @@ namespace AtPulso
 					this.Text = "AtPulso by GoodVrGames";
 					Log("Disconnected");
 
+					cbTestMode.Checked = false;
+					cbTestMode.Enabled = false;
 					buDeviceConnect.Enabled = true;
 					buDeviceGetInfo.Enabled = false;
 					buDeviceDisconnect.Enabled = false;
@@ -564,7 +580,7 @@ namespace AtPulso
 								break;
 						}
 						responseString = responseString.Replace("{position_small_numbers}", "right");
-						responseString = responseString.Replace("{container_left}", "0");
+						responseString = responseString.Replace("{container_left}", "0");						
 					} 
 					else
 					{
@@ -620,6 +636,7 @@ namespace AtPulso
 					responseString = responseString.Replace("{color_small_numbers}", Properties.Settings.Default.MinMaxColor);
 					//responseString = responseString.Replace("{display_mode_big_number}", showBigNumber ? "inline-block" : "none");
 					responseString = responseString.Replace("{chart_width}", Properties.Settings.Default.ChartWidth.ToString());
+					responseString = responseString.Replace("{anim_speed_multiplier}", Properties.Settings.Default.AnimationSpeedMultiplier.ToString().Replace(",", "."));
 
 
 
@@ -653,5 +670,9 @@ namespace AtPulso
 			}
 		}
 
+		private void label17_Click(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

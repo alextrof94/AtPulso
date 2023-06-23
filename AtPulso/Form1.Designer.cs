@@ -91,6 +91,10 @@ namespace AtPulso
 			this.niTray = new System.Windows.Forms.NotifyIcon(this.components);
 			this.tiClose = new System.Windows.Forms.Timer(this.components);
 			this.tiHideOnStart = new System.Windows.Forms.Timer(this.components);
+			this.cbTestMode = new System.Windows.Forms.CheckBox();
+			this.nudAnimSpeedMultiplier = new System.Windows.Forms.NumericUpDown();
+			this.label17 = new System.Windows.Forms.Label();
+			this.label18 = new System.Windows.Forms.Label();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.groupBox6.SuspendLayout();
@@ -103,10 +107,12 @@ namespace AtPulso
 			((System.ComponentModel.ISupportInitialize)(this.nudServerPort)).BeginInit();
 			this.groupBox4.SuspendLayout();
 			this.groupBox5.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nudAnimSpeedMultiplier)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// groupBox1
 			// 
+			this.groupBox1.Controls.Add(this.cbTestMode);
 			this.groupBox1.Controls.Add(this.tbDeviceName);
 			this.groupBox1.Controls.Add(this.tbDeviceBattery);
 			this.groupBox1.Controls.Add(this.tbDeviceStatus);
@@ -120,7 +126,7 @@ namespace AtPulso
 			this.groupBox1.Controls.Add(this.label1);
 			this.groupBox1.Location = new System.Drawing.Point(12, 108);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(215, 180);
+			this.groupBox1.Size = new System.Drawing.Size(215, 198);
 			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Device Settings";
@@ -179,7 +185,7 @@ namespace AtPulso
 			this.buDeviceGetInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.buDeviceGetInfo.Enabled = false;
-			this.buDeviceGetInfo.Location = new System.Drawing.Point(9, 150);
+			this.buDeviceGetInfo.Location = new System.Drawing.Point(9, 168);
 			this.buDeviceGetInfo.Name = "buDeviceGetInfo";
 			this.buDeviceGetInfo.Size = new System.Drawing.Size(103, 23);
 			this.buDeviceGetInfo.TabIndex = 6;
@@ -191,7 +197,7 @@ namespace AtPulso
 			// 
 			this.buDeviceDisconnect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.buDeviceDisconnect.Enabled = false;
-			this.buDeviceDisconnect.Location = new System.Drawing.Point(118, 150);
+			this.buDeviceDisconnect.Location = new System.Drawing.Point(118, 168);
 			this.buDeviceDisconnect.Name = "buDeviceDisconnect";
 			this.buDeviceDisconnect.Size = new System.Drawing.Size(91, 23);
 			this.buDeviceDisconnect.TabIndex = 4;
@@ -203,7 +209,7 @@ namespace AtPulso
 			// 
 			this.buDeviceConnect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.buDeviceConnect.Location = new System.Drawing.Point(9, 125);
+			this.buDeviceConnect.Location = new System.Drawing.Point(9, 143);
 			this.buDeviceConnect.Name = "buDeviceConnect";
 			this.buDeviceConnect.Size = new System.Drawing.Size(103, 23);
 			this.buDeviceConnect.TabIndex = 3;
@@ -262,12 +268,13 @@ namespace AtPulso
 			// 
 			this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox6.Controls.Add(this.label18);
 			this.groupBox6.Controls.Add(this.label15);
 			this.groupBox6.Controls.Add(this.tbObsWidth);
 			this.groupBox6.Controls.Add(this.label14);
-			this.groupBox6.Location = new System.Drawing.Point(9, 364);
+			this.groupBox6.Location = new System.Drawing.Point(9, 389);
 			this.groupBox6.Name = "groupBox6";
-			this.groupBox6.Size = new System.Drawing.Size(346, 63);
+			this.groupBox6.Size = new System.Drawing.Size(346, 88);
 			this.groupBox6.TabIndex = 12;
 			this.groupBox6.TabStop = false;
 			this.groupBox6.Text = "Hint";
@@ -277,9 +284,9 @@ namespace AtPulso
 			this.label15.AutoSize = true;
 			this.label15.Location = new System.Drawing.Point(6, 42);
 			this.label15.Name = "label15";
-			this.label15.Size = new System.Drawing.Size(73, 13);
+			this.label15.Size = new System.Drawing.Size(114, 13);
 			this.label15.TabIndex = 8;
-			this.label15.Text = "Height: 150px";
+			this.label15.Text = "Height for OBS:     150";
 			// 
 			// tbObsWidth
 			// 
@@ -403,9 +410,9 @@ namespace AtPulso
 			this.label12.AutoSize = true;
 			this.label12.Location = new System.Drawing.Point(6, 47);
 			this.label12.Name = "label12";
-			this.label12.Size = new System.Drawing.Size(63, 13);
+			this.label12.Size = new System.Drawing.Size(66, 13);
 			this.label12.TabIndex = 8;
-			this.label12.Text = "Chart width:";
+			this.label12.Text = "Chart Width:";
 			// 
 			// label8
 			// 
@@ -449,13 +456,15 @@ namespace AtPulso
 			// 
 			this.gbAnimationSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.gbAnimationSettings.Controls.Add(this.nudAnimSpeedMultiplier);
+			this.gbAnimationSettings.Controls.Add(this.label17);
 			this.gbAnimationSettings.Controls.Add(this.buAnimationClear);
 			this.gbAnimationSettings.Controls.Add(this.buAnimationSelect);
 			this.gbAnimationSettings.Controls.Add(this.tbAnimationPath);
 			this.gbAnimationSettings.Controls.Add(this.label13);
 			this.gbAnimationSettings.Location = new System.Drawing.Point(9, 265);
 			this.gbAnimationSettings.Name = "gbAnimationSettings";
-			this.gbAnimationSettings.Size = new System.Drawing.Size(346, 89);
+			this.gbAnimationSettings.Size = new System.Drawing.Size(346, 118);
 			this.gbAnimationSettings.TabIndex = 10;
 			this.gbAnimationSettings.TabStop = false;
 			this.gbAnimationSettings.Text = "Animation Settings";
@@ -604,7 +613,7 @@ namespace AtPulso
 			this.groupBox3.Controls.Add(this.label5);
 			this.groupBox3.Controls.Add(this.nudServerPort);
 			this.groupBox3.Controls.Add(this.label4);
-			this.groupBox3.Location = new System.Drawing.Point(12, 294);
+			this.groupBox3.Location = new System.Drawing.Point(12, 323);
 			this.groupBox3.Name = "groupBox3";
 			this.groupBox3.Size = new System.Drawing.Size(215, 100);
 			this.groupBox3.TabIndex = 2;
@@ -734,9 +743,9 @@ namespace AtPulso
             | System.Windows.Forms.AnchorStyles.Left)));
 			this.groupBox5.Controls.Add(this.tbLog);
 			this.groupBox5.Controls.Add(this.lbLog);
-			this.groupBox5.Location = new System.Drawing.Point(12, 400);
+			this.groupBox5.Location = new System.Drawing.Point(12, 429);
 			this.groupBox5.Name = "groupBox5";
-			this.groupBox5.Size = new System.Drawing.Size(215, 227);
+			this.groupBox5.Size = new System.Drawing.Size(215, 198);
 			this.groupBox5.TabIndex = 4;
 			this.groupBox5.TabStop = false;
 			this.groupBox5.Text = "Log";
@@ -784,6 +793,64 @@ namespace AtPulso
 			this.tiHideOnStart.Interval = 1000;
 			this.tiHideOnStart.Tick += new System.EventHandler(this.tiHideOnStart_Tick);
 			// 
+			// cbTestMode
+			// 
+			this.cbTestMode.AutoSize = true;
+			this.cbTestMode.Location = new System.Drawing.Point(9, 123);
+			this.cbTestMode.Name = "cbTestMode";
+			this.cbTestMode.Size = new System.Drawing.Size(169, 17);
+			this.cbTestMode.TabIndex = 12;
+			this.cbTestMode.Text = "Test Mode (60 bpm for output)";
+			this.cbTestMode.UseVisualStyleBackColor = true;
+			// 
+			// nudAnimSpeedMultiplier
+			// 
+			this.nudAnimSpeedMultiplier.DecimalPlaces = 2;
+			this.nudAnimSpeedMultiplier.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+			this.nudAnimSpeedMultiplier.Location = new System.Drawing.Point(98, 85);
+			this.nudAnimSpeedMultiplier.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+			this.nudAnimSpeedMultiplier.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+			this.nudAnimSpeedMultiplier.Name = "nudAnimSpeedMultiplier";
+			this.nudAnimSpeedMultiplier.Size = new System.Drawing.Size(71, 20);
+			this.nudAnimSpeedMultiplier.TabIndex = 15;
+			this.nudAnimSpeedMultiplier.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.nudAnimSpeedMultiplier.ValueChanged += new System.EventHandler(this.nudAnimSpeedMultiplier_ValueChanged);
+			// 
+			// label17
+			// 
+			this.label17.AutoSize = true;
+			this.label17.Location = new System.Drawing.Point(6, 87);
+			this.label17.Name = "label17";
+			this.label17.Size = new System.Drawing.Size(85, 13);
+			this.label17.TabIndex = 14;
+			this.label17.Text = "Speed Multiplier:";
+			this.label17.Click += new System.EventHandler(this.label17_Click);
+			// 
+			// label18
+			// 
+			this.label18.AutoSize = true;
+			this.label18.Location = new System.Drawing.Point(6, 64);
+			this.label18.Name = "label18";
+			this.label18.Size = new System.Drawing.Size(297, 13);
+			this.label18.TabIndex = 9;
+			this.label18.Text = "All output settings updating on the fly (refresh browser/widget)";
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -821,6 +888,7 @@ namespace AtPulso
 			this.groupBox4.PerformLayout();
 			this.groupBox5.ResumeLayout(false);
 			this.groupBox5.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nudAnimSpeedMultiplier)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -887,6 +955,10 @@ namespace AtPulso
 		private System.Windows.Forms.NotifyIcon niTray;
 		private System.Windows.Forms.Timer tiClose;
 		private System.Windows.Forms.Timer tiHideOnStart;
+		private System.Windows.Forms.CheckBox cbTestMode;
+		private System.Windows.Forms.NumericUpDown nudAnimSpeedMultiplier;
+		private System.Windows.Forms.Label label17;
+		private System.Windows.Forms.Label label18;
 	}
 }
 

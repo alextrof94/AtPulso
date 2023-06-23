@@ -221,7 +221,7 @@
 	function updateChart() {
 		let value = getNewValue();
 		if (vid)
-			vid.playbackRate = value/60.0;
+			vid.playbackRate = (value/60.0)*{anim_speed_multiplier};
 		
 		if (chart.data.datasets[0].data.length &gt; {dots_width}) {
 			chart.data.datasets[0].data.pop();
@@ -392,7 +392,7 @@
 	function updateChart() {
 		let value = getNewValue();
 		if (vid)
-			vid.playbackRate = value/60.0;
+			vid.playbackRate = (value/60.0)*{anim_speed_multiplier};
 		
 		if (hr)
 			hr.textContent = value;
