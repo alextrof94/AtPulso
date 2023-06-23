@@ -12,6 +12,7 @@ It can show:
 4. "Connect" device in app.
 5. If connected and checkbox "Autostart server when connected" is setted - copy Server-Address to OBS. Otherwise - first "Start" server.
 
+
 UI settings updates on the fly by reload page in browser (or widget in OBS).
 
 ![Preview2](https://github.com/alextrof94/AtPulso/blob/main/images/screenshot.jpg)
@@ -21,6 +22,8 @@ UI settings updates on the fly by reload page in browser (or widget in OBS).
 
 ## Animation
 For animation you need to select webm video with length of 1 sec with 1 "beat"
+
+You can download animations from [animations link](https://github.com/alextrof94/AtPulso/tree/main/animations) or create your own and select it.
 
 ![Preview1](https://github.com/alextrof94/AtPulso/blob/main/images/preview.gif)
 
