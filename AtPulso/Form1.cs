@@ -34,6 +34,8 @@ namespace AtPulso
 
 		bool disconnectedByButton = false;
 
+		PulseLog pulseLog = new PulseLog();
+
 		public Form1()
 		{
 			InitializeComponent();
@@ -329,6 +331,8 @@ namespace AtPulso
 					else
 						lastBpm = e.BeatsPerMinute;
 					this.Text = String.Format("{1} bpm | AtPulso by GoodVrGames v{0}", version, lastBpm);
+					if (cbSaveHeartrateLog.Checked)
+						pulseLog.Add(e.BeatsPerMinute);
 				});
 			}
 			catch (Exception ex) { 
@@ -664,15 +668,16 @@ namespace AtPulso
 					await _heartRateMonitor.DisconnectAsync();
 				e.Cancel = true;
 			}
+			if (cbSaveHeartrateLog.Checked && pulseLog.haveUnsavedData)
+			{
+				pulseLog.Save();
+				if (pulseLog.haveUnsavedData)
+					e.Cancel = true;
+			}
 			if (e.Cancel)
 			{
 				tiClose.Start();
 			}
-		}
-
-		private void label17_Click(object sender, EventArgs e)
-		{
-
 		}
 	}
 }

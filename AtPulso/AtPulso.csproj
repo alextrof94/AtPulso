@@ -98,11 +98,23 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPulseLogName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPulseLogName.Designer.cs">
+      <DependentUpon>FormPulseLogName.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormSelectDevice.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormSelectDevice.Designer.cs">
       <DependentUpon>FormSelectDevice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTurnLiveAuth.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTurnLiveAuth.Designer.cs">
+      <DependentUpon>FormTurnLiveAuth.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -115,6 +127,7 @@
     <Compile Include="Utils\HeartDeviceWatcher.cs" />
     <Compile Include="Utils\HeartRateMonitor.cs" />
     <Compile Include="Utils\PairingHelper.cs" />
+    <Compile Include="Utils\PulseLog.cs" />
     <Compile Include="Utils\Scheme\BluetoothAttribute.cs" />
     <Compile Include="Utils\Scheme\BluetoothAttributeType.cs" />
     <Compile Include="Utils\Scheme\CharacteristicResult.cs" />
@@ -132,8 +145,14 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormPulseLogName.resx">
+      <DependentUpon>FormPulseLogName.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormSelectDevice.resx">
       <DependentUpon>FormSelectDevice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTurnLiveAuth.resx">
+      <DependentUpon>FormTurnLiveAuth.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
