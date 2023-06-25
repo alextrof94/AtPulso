@@ -61,7 +61,7 @@ namespace AtPulso.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на &lt;video id=&quot;video&quot; width=&quot;150&quot; height=&quot;150&quot; style=&quot;position:absolute; left:{video_left}px&quot; loop autoplay muted&gt;
+        ///   Ищет локализованную строку, похожую на &lt;video id=&quot;video&quot; width=&quot;150&quot; height=&quot;150&quot; style=&quot;position:absolute; left:{video_left}px; {animation_filter}&quot; loop autoplay muted&gt;
         /// &lt;source src=&quot;http://localhost:{port}/video&quot; type=&apos;video/webm&apos;&gt;
         ///&lt;/video&gt;.
         /// </summary>

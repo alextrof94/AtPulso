@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Animation" xml:space="preserve">
-    <value>&lt;video id="video" width="150" height="150" style="position:absolute; left:{video_left}px" loop autoplay muted&gt;
+    <value>&lt;video id="video" width="150" height="150" style="position:absolute; left:{video_left}px; {animation_filter}" loop autoplay muted&gt;
  &lt;source src="http://localhost:{port}/video" type='video/webm'&gt;
 &lt;/video&gt;</value>
   </data>

@@ -80,9 +80,9 @@ namespace AtPulso
 			tbLineColor.Text = Properties.Settings.Default.LineColor;
 			tbMinMaxColor.Text = Properties.Settings.Default.MinMaxColor;
 
-
 			tbAnimationPath.Text = Properties.Settings.Default.AnimationPath;
 			nudAnimSpeedMultiplier.Value = Properties.Settings.Default.AnimationSpeedMultiplier;
+			tbAnimFilter.Text = Properties.Settings.Default.AnimationFilter;
 
 			// we should always monitor the connection status
 			//_heartRateMonitor.ConnectionStatusChanged -= HrDeviceOnDeviceConnectionStatusChanged;
@@ -211,6 +211,12 @@ namespace AtPulso
 			Properties.Settings.Default.AnimationPath = "";
 			Properties.Settings.Default.Save();
 			tbAnimationPath.Text = "";
+		}
+
+		private void tbAnimFilter_TextChanged(object sender, EventArgs e)
+		{
+			Properties.Settings.Default.AnimationFilter = tbAnimFilter.Text;
+			Properties.Settings.Default.Save();
 		}
 
 		private void buDeviceConnect_Click(object sender, EventArgs e)
@@ -634,6 +640,7 @@ namespace AtPulso
 					responseString = responseString.Replace("{color_line}", Properties.Settings.Default.LineColor);
 					responseString = responseString.Replace("{color_big_number}", Properties.Settings.Default.HeartRateColor);
 					responseString = responseString.Replace("{color_small_numbers}", Properties.Settings.Default.MinMaxColor);
+					responseString = responseString.Replace("{animation_filter}", Properties.Settings.Default.AnimationFilter);
 					//responseString = responseString.Replace("{display_mode_big_number}", showBigNumber ? "inline-block" : "none");
 					responseString = responseString.Replace("{chart_width}", Properties.Settings.Default.ChartWidth.ToString());
 					responseString = responseString.Replace("{anim_speed_multiplier}", Properties.Settings.Default.AnimationSpeedMultiplier.ToString().Replace(",", "."));
@@ -670,9 +677,9 @@ namespace AtPulso
 			}
 		}
 
-		private void label17_Click(object sender, EventArgs e)
+		private void buOpenFilterPage_Click(object sender, EventArgs e)
 		{
-
+			System.Diagnostics.Process.Start("https://codepen.io/sosuke/pen/Pjoqqp");
 		}
 	}
 }

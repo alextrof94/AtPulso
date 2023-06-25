@@ -32,6 +32,7 @@ namespace AtPulso
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.cbTestMode = new System.Windows.Forms.CheckBox();
 			this.tbDeviceName = new System.Windows.Forms.TextBox();
 			this.tbDeviceBattery = new System.Windows.Forms.TextBox();
 			this.tbDeviceStatus = new System.Windows.Forms.TextBox();
@@ -45,6 +46,7 @@ namespace AtPulso
 			this.label1 = new System.Windows.Forms.Label();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.groupBox6 = new System.Windows.Forms.GroupBox();
+			this.label18 = new System.Windows.Forms.Label();
 			this.label15 = new System.Windows.Forms.Label();
 			this.tbObsWidth = new System.Windows.Forms.TextBox();
 			this.label14 = new System.Windows.Forms.Label();
@@ -60,6 +62,8 @@ namespace AtPulso
 			this.label7 = new System.Windows.Forms.Label();
 			this.tbMinMaxColor = new System.Windows.Forms.TextBox();
 			this.gbAnimationSettings = new System.Windows.Forms.GroupBox();
+			this.nudAnimSpeedMultiplier = new System.Windows.Forms.NumericUpDown();
+			this.label17 = new System.Windows.Forms.Label();
 			this.buAnimationClear = new System.Windows.Forms.Button();
 			this.buAnimationSelect = new System.Windows.Forms.Button();
 			this.tbAnimationPath = new System.Windows.Forms.TextBox();
@@ -91,10 +95,9 @@ namespace AtPulso
 			this.niTray = new System.Windows.Forms.NotifyIcon(this.components);
 			this.tiClose = new System.Windows.Forms.Timer(this.components);
 			this.tiHideOnStart = new System.Windows.Forms.Timer(this.components);
-			this.cbTestMode = new System.Windows.Forms.CheckBox();
-			this.nudAnimSpeedMultiplier = new System.Windows.Forms.NumericUpDown();
-			this.label17 = new System.Windows.Forms.Label();
-			this.label18 = new System.Windows.Forms.Label();
+			this.label19 = new System.Windows.Forms.Label();
+			this.tbAnimFilter = new System.Windows.Forms.TextBox();
+			this.buOpenFilterPage = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.groupBox6.SuspendLayout();
@@ -102,12 +105,12 @@ namespace AtPulso
 			((System.ComponentModel.ISupportInitialize)(this.nudChartDotsCount)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.nudChartWidth)).BeginInit();
 			this.gbAnimationSettings.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nudAnimSpeedMultiplier)).BeginInit();
 			this.gbHeartRateSettings.SuspendLayout();
 			this.groupBox3.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.nudServerPort)).BeginInit();
 			this.groupBox4.SuspendLayout();
 			this.groupBox5.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.nudAnimSpeedMultiplier)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// groupBox1
@@ -130,6 +133,16 @@ namespace AtPulso
 			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Device Settings";
+			// 
+			// cbTestMode
+			// 
+			this.cbTestMode.AutoSize = true;
+			this.cbTestMode.Location = new System.Drawing.Point(9, 123);
+			this.cbTestMode.Name = "cbTestMode";
+			this.cbTestMode.Size = new System.Drawing.Size(169, 17);
+			this.cbTestMode.TabIndex = 12;
+			this.cbTestMode.Text = "Test Mode (60 bpm for output)";
+			this.cbTestMode.UseVisualStyleBackColor = true;
 			// 
 			// tbDeviceName
 			// 
@@ -278,6 +291,15 @@ namespace AtPulso
 			this.groupBox6.TabIndex = 12;
 			this.groupBox6.TabStop = false;
 			this.groupBox6.Text = "Hint";
+			// 
+			// label18
+			// 
+			this.label18.AutoSize = true;
+			this.label18.Location = new System.Drawing.Point(6, 64);
+			this.label18.Name = "label18";
+			this.label18.Size = new System.Drawing.Size(297, 13);
+			this.label18.TabIndex = 9;
+			this.label18.Text = "All output settings updating on the fly (refresh browser/widget)";
 			// 
 			// label15
 			// 
@@ -456,6 +478,9 @@ namespace AtPulso
 			// 
 			this.gbAnimationSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.gbAnimationSettings.Controls.Add(this.buOpenFilterPage);
+			this.gbAnimationSettings.Controls.Add(this.tbAnimFilter);
+			this.gbAnimationSettings.Controls.Add(this.label19);
 			this.gbAnimationSettings.Controls.Add(this.nudAnimSpeedMultiplier);
 			this.gbAnimationSettings.Controls.Add(this.label17);
 			this.gbAnimationSettings.Controls.Add(this.buAnimationClear);
@@ -468,6 +493,44 @@ namespace AtPulso
 			this.gbAnimationSettings.TabIndex = 10;
 			this.gbAnimationSettings.TabStop = false;
 			this.gbAnimationSettings.Text = "Animation Settings";
+			// 
+			// nudAnimSpeedMultiplier
+			// 
+			this.nudAnimSpeedMultiplier.DecimalPlaces = 2;
+			this.nudAnimSpeedMultiplier.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+			this.nudAnimSpeedMultiplier.Location = new System.Drawing.Point(98, 85);
+			this.nudAnimSpeedMultiplier.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+			this.nudAnimSpeedMultiplier.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+			this.nudAnimSpeedMultiplier.Name = "nudAnimSpeedMultiplier";
+			this.nudAnimSpeedMultiplier.Size = new System.Drawing.Size(52, 20);
+			this.nudAnimSpeedMultiplier.TabIndex = 15;
+			this.nudAnimSpeedMultiplier.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.nudAnimSpeedMultiplier.ValueChanged += new System.EventHandler(this.nudAnimSpeedMultiplier_ValueChanged);
+			// 
+			// label17
+			// 
+			this.label17.AutoSize = true;
+			this.label17.Location = new System.Drawing.Point(6, 87);
+			this.label17.Name = "label17";
+			this.label17.Size = new System.Drawing.Size(85, 13);
+			this.label17.TabIndex = 14;
+			this.label17.Text = "Speed Multiplier:";
 			// 
 			// buAnimationClear
 			// 
@@ -793,63 +856,35 @@ namespace AtPulso
 			this.tiHideOnStart.Interval = 1000;
 			this.tiHideOnStart.Tick += new System.EventHandler(this.tiHideOnStart_Tick);
 			// 
-			// cbTestMode
+			// label19
 			// 
-			this.cbTestMode.AutoSize = true;
-			this.cbTestMode.Location = new System.Drawing.Point(9, 123);
-			this.cbTestMode.Name = "cbTestMode";
-			this.cbTestMode.Size = new System.Drawing.Size(169, 17);
-			this.cbTestMode.TabIndex = 12;
-			this.cbTestMode.Text = "Test Mode (60 bpm for output)";
-			this.cbTestMode.UseVisualStyleBackColor = true;
+			this.label19.AutoSize = true;
+			this.label19.Location = new System.Drawing.Point(156, 87);
+			this.label19.Name = "label19";
+			this.label19.Size = new System.Drawing.Size(56, 13);
+			this.label19.TabIndex = 16;
+			this.label19.Text = "CSS Filter:";
 			// 
-			// nudAnimSpeedMultiplier
+			// tbAnimFilter
 			// 
-			this.nudAnimSpeedMultiplier.DecimalPlaces = 2;
-			this.nudAnimSpeedMultiplier.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-			this.nudAnimSpeedMultiplier.Location = new System.Drawing.Point(98, 85);
-			this.nudAnimSpeedMultiplier.Maximum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-			this.nudAnimSpeedMultiplier.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-			this.nudAnimSpeedMultiplier.Name = "nudAnimSpeedMultiplier";
-			this.nudAnimSpeedMultiplier.Size = new System.Drawing.Size(71, 20);
-			this.nudAnimSpeedMultiplier.TabIndex = 15;
-			this.nudAnimSpeedMultiplier.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-			this.nudAnimSpeedMultiplier.ValueChanged += new System.EventHandler(this.nudAnimSpeedMultiplier_ValueChanged);
+			this.tbAnimFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbAnimFilter.Location = new System.Drawing.Point(218, 84);
+			this.tbAnimFilter.Name = "tbAnimFilter";
+			this.tbAnimFilter.Size = new System.Drawing.Size(95, 20);
+			this.tbAnimFilter.TabIndex = 17;
+			this.tbAnimFilter.TextChanged += new System.EventHandler(this.tbAnimFilter_TextChanged);
 			// 
-			// label17
+			// buOpenFilterPage
 			// 
-			this.label17.AutoSize = true;
-			this.label17.Location = new System.Drawing.Point(6, 87);
-			this.label17.Name = "label17";
-			this.label17.Size = new System.Drawing.Size(85, 13);
-			this.label17.TabIndex = 14;
-			this.label17.Text = "Speed Multiplier:";
-			this.label17.Click += new System.EventHandler(this.label17_Click);
-			// 
-			// label18
-			// 
-			this.label18.AutoSize = true;
-			this.label18.Location = new System.Drawing.Point(6, 64);
-			this.label18.Name = "label18";
-			this.label18.Size = new System.Drawing.Size(297, 13);
-			this.label18.TabIndex = 9;
-			this.label18.Text = "All output settings updating on the fly (refresh browser/widget)";
+			this.buOpenFilterPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.buOpenFilterPage.Location = new System.Drawing.Point(319, 84);
+			this.buOpenFilterPage.Name = "buOpenFilterPage";
+			this.buOpenFilterPage.Size = new System.Drawing.Size(21, 20);
+			this.buOpenFilterPage.TabIndex = 18;
+			this.buOpenFilterPage.Text = "?";
+			this.buOpenFilterPage.UseVisualStyleBackColor = true;
+			this.buOpenFilterPage.Click += new System.EventHandler(this.buOpenFilterPage_Click);
 			// 
 			// Form1
 			// 
@@ -879,6 +914,7 @@ namespace AtPulso
 			((System.ComponentModel.ISupportInitialize)(this.nudChartWidth)).EndInit();
 			this.gbAnimationSettings.ResumeLayout(false);
 			this.gbAnimationSettings.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nudAnimSpeedMultiplier)).EndInit();
 			this.gbHeartRateSettings.ResumeLayout(false);
 			this.gbHeartRateSettings.PerformLayout();
 			this.groupBox3.ResumeLayout(false);
@@ -888,7 +924,6 @@ namespace AtPulso
 			this.groupBox4.PerformLayout();
 			this.groupBox5.ResumeLayout(false);
 			this.groupBox5.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.nudAnimSpeedMultiplier)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -959,6 +994,9 @@ namespace AtPulso
 		private System.Windows.Forms.NumericUpDown nudAnimSpeedMultiplier;
 		private System.Windows.Forms.Label label17;
 		private System.Windows.Forms.Label label18;
+		private System.Windows.Forms.TextBox tbAnimFilter;
+		private System.Windows.Forms.Label label19;
+		private System.Windows.Forms.Button buOpenFilterPage;
 	}
 }
 
