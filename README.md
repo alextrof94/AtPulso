@@ -27,6 +27,14 @@ You can download animations from [animations link](https://github.com/alextrof94
 
 ![Preview1](https://github.com/alextrof94/AtPulso/blob/main/images/preview.gif)
 
+You also can add CSS filter for animation to change color of animation. For example change color from black to red:
+```
+filter: invert(10%) sepia(94%) saturate(7448%) hue-rotate(358deg) brightness(100%) contrast(107%);
+```
+[Page with generating filters](https://codepen.io/sosuke/pen/Pjoqqp)
+
+
+
 ## Compatibility
 ### Don't working with:
 Mi Bands 4+ & Amazfits (they are protected from connecting to third-party applications)
