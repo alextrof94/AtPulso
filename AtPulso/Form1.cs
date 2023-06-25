@@ -20,7 +20,7 @@ namespace AtPulso
 {
 	public partial class Form1 : Form
 	{
-		private string version = "1.1";
+		private string version = "1.2";
 
 		public ObservableCollection<WatcherDevice> devices = new ObservableCollection<WatcherDevice>();
 		private HeartRateMonitor _heartRateMonitor = new HeartRateMonitor();
