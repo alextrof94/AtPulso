@@ -41,3 +41,4 @@ Mi Bands 4+ & Amazfits (they are protected from connecting to third-party applic
 
 ### Working with:
 Magene H303 (chest sensor)
+CooSpo H808S (chest sensor)
