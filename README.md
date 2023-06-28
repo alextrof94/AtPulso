@@ -37,8 +37,8 @@ filter: invert(10%) sepia(94%) saturate(7448%) hue-rotate(358deg) brightness(100
 
 ## Compatibility
 ### Don't working with:
-Mi Bands 4+ & Amazfits (they are protected from connecting to third-party applications)
+ - Mi Bands 4+ & Amazfits (they are protected from connecting to third-party applications)
 
 ### Working with:
-Magene H303 (chest sensor)
-CooSpo H808S (chest sensor)
+ - Magene H303 (chest sensor)
+ - CooSpo H808S (chest sensor)
