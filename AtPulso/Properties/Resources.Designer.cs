@@ -101,6 +101,16 @@ namespace AtPulso.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Disconnected {
+            get {
+                object obj = ResourceManager.GetObject("Disconnected", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на &lt;script&gt;
         ///	const ctx = document.getElementById(&apos;myChart&apos;);
         ///	const vid = document.getElementById(&apos;video&apos;);
@@ -111,8 +121,9 @@ namespace AtPulso.Properties {
         ///		data: {
         ///		  datasets: [{
         ///			data: [],
-        ///			borderWidth: 1,
+        ///			borderWidth: {line_thickness},
         ///			borderColor: &apos;{color_line}&apos;,
+        ///			tension: {line_smooth},
         ///		  }]
         ///		},
         ///		options: {
@@ -123,10 +134,7 @@ namespace AtPulso.Properties {
         ///				point: {
         ///					radius: 0
         ///				}
-        ///			},
-        ///			scales: {
-        ///				x: {
-        ///					border: {        /// [остаток строки не уместился]&quot;;.
+        ///			 [остаток строки не уместился]&quot;;.
         /// </summary>
         internal static string Footer_All {
             get {
@@ -144,8 +152,9 @@ namespace AtPulso.Properties {
         ///		data: {
         ///		  datasets: [{
         ///			data: [],
-        ///			borderWidth: 1,
+        ///			borderWidth: {line_thickness},
         ///			borderColor: &apos;{color_line}&apos;,
+        ///			tension: {line_smooth},
         ///		  }]
         ///		},
         ///		options: {
@@ -160,10 +169,7 @@ namespace AtPulso.Properties {
         ///			scales: {
         ///				x: {
         ///					border: {
-        ///						display: false
-        ///					},
-        ///					grid: {
-        ///		 [остаток строки не уместился]&quot;;.
+        ///				 [остаток строки не уместился]&quot;;.
         /// </summary>
         internal static string Footer_Chart_HR {
             get {
@@ -189,10 +195,9 @@ namespace AtPulso.Properties {
         ///	function updateChart() {
         ///		let value = getNewValue();
         ///		
-        ///		if (hr)
+        ///		if (hr) {
         ///			hr.textContent = value;
-        ///	}
-        ///	setInterval(updateChar [остаток строки не уместился]&quot;;.
+        ///			if ({hr_threshold_chan [остаток строки не уместился]&quot;;.
         /// </summary>
         internal static string Footer_HR {
             get {
@@ -239,7 +244,6 @@ namespace AtPulso.Properties {
         ///    position: absolute;
         ///	text-align: center;
         ///	width: 100px;
-        ///	font-family: cursive;
         ///	text-shadow:
         ///		0 0 7px {color_big_number},
         ///		0 0 10px {color_big_number},
@@ -256,8 +260,17 @@ namespace AtPulso.Properties {
         ///   Ищет локализованную строку, похожую на &lt;html&gt;
         ///&lt;head&gt;
         ///{chart_header}
+        ///&lt;style&gt;
+        ///.hr_high {
+        ///	color: {hr_threshold_color} !important;
+        ///	text-shadow:
+        ///		0 0 7px {hr_threshold_color},
+        ///		0 0 10px {hr_threshold_color},
+        ///		0 0 21px {hr_threshold_color} !important;
+        ///}
+        ///&lt;/style&gt;
         ///&lt;/head&gt;
-        ///&lt;body style=&quot;background-color: rgba(0, 0, 0, 0); margin: 0px auto; overflow: hidden;&quot;&gt;
+        ///&lt;body style=&quot;background-color: rgba(0, 0, 0, 0); margin: 0px auto; overflow: hidden; font-family: {font_family}&quot;&gt;
         ///{main_container}
         ///{script_footer}
         ///&lt;/body&gt;

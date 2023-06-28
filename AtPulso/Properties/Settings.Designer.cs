@@ -26,12 +26,12 @@ namespace AtPulso.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool AutoConnectAndHideToTray {
+        public bool AutoConnectAtStart {
             get {
-                return ((bool)(this["AutoConnectAndHideToTray"]));
+                return ((bool)(this["AutoConnectAtStart"]));
             }
             set {
-                this["AutoConnectAndHideToTray"] = value;
+                this["AutoConnectAtStart"] = value;
             }
         }
         
@@ -200,6 +200,102 @@ namespace AtPulso.Properties {
             }
             set {
                 this["AnimationFilter"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("cursive")]
+        public string FontFamily {
+            get {
+                return ((string)(this["FontFamily"]));
+            }
+            set {
+                this["FontFamily"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public decimal ChartLineThickness {
+            get {
+                return ((decimal)(this["ChartLineThickness"]));
+            }
+            set {
+                this["ChartLineThickness"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ChartLineSmooth {
+            get {
+                return ((bool)(this["ChartLineSmooth"]));
+            }
+            set {
+                this["ChartLineSmooth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool HideAtStart {
+            get {
+                return ((bool)(this["HideAtStart"]));
+            }
+            set {
+                this["HideAtStart"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SoundAlert {
+            get {
+                return ((bool)(this["SoundAlert"]));
+            }
+            set {
+                this["SoundAlert"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool HeartRateThresholdChange {
+            get {
+                return ((bool)(this["HeartRateThresholdChange"]));
+            }
+            set {
+                this["HeartRateThresholdChange"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("#FF0000")]
+        public string HeartRateThresholdColor {
+            get {
+                return ((string)(this["HeartRateThresholdColor"]));
+            }
+            set {
+                this["HeartRateThresholdColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("120")]
+        public decimal HeartRateThreshold {
+            get {
+                return ((decimal)(this["HeartRateThreshold"]));
+            }
+            set {
+                this["HeartRateThreshold"] = value;
             }
         }
     }

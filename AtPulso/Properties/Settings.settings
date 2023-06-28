@@ -2,7 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AtPulso.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="AutoConnectAndHideToTray" Type="System.Boolean" Scope="User">
+    <Setting Name="AutoConnectAtStart" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="RetryConnectWhenFailed" Type="System.Boolean" Scope="User">
@@ -46,6 +46,30 @@
     </Setting>
     <Setting Name="AnimationFilter" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FontFamily" Type="System.String" Scope="User">
+      <Value Profile="(Default)">cursive</Value>
+    </Setting>
+    <Setting Name="ChartLineThickness" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="ChartLineSmooth" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="HideAtStart" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SoundAlert" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="HeartRateThresholdChange" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="HeartRateThresholdColor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#FF0000</Value>
+    </Setting>
+    <Setting Name="HeartRateThreshold" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">120</Value>
     </Setting>
   </Settings>
 </SettingsFile>

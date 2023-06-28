@@ -45,12 +45,18 @@ namespace AtPulso
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.buOpenCssFontPage = new System.Windows.Forms.Button();
+			this.tbFontFamily = new System.Windows.Forms.TextBox();
+			this.label21 = new System.Windows.Forms.Label();
 			this.groupBox6 = new System.Windows.Forms.GroupBox();
 			this.label18 = new System.Windows.Forms.Label();
 			this.label15 = new System.Windows.Forms.Label();
 			this.tbObsWidth = new System.Windows.Forms.TextBox();
 			this.label14 = new System.Windows.Forms.Label();
 			this.gbChartSettings = new System.Windows.Forms.GroupBox();
+			this.cbChartLineSmooth = new System.Windows.Forms.CheckBox();
+			this.nudChartLineThickness = new System.Windows.Forms.NumericUpDown();
+			this.label20 = new System.Windows.Forms.Label();
 			this.nudChartDotsCount = new System.Windows.Forms.NumericUpDown();
 			this.buMinMaxColor = new System.Windows.Forms.Button();
 			this.label6 = new System.Windows.Forms.Label();
@@ -62,6 +68,9 @@ namespace AtPulso
 			this.label7 = new System.Windows.Forms.Label();
 			this.tbMinMaxColor = new System.Windows.Forms.TextBox();
 			this.gbAnimationSettings = new System.Windows.Forms.GroupBox();
+			this.buOpenFilterPage = new System.Windows.Forms.Button();
+			this.tbAnimFilter = new System.Windows.Forms.TextBox();
+			this.label19 = new System.Windows.Forms.Label();
 			this.nudAnimSpeedMultiplier = new System.Windows.Forms.NumericUpDown();
 			this.label17 = new System.Windows.Forms.Label();
 			this.buAnimationClear = new System.Windows.Forms.Button();
@@ -73,6 +82,12 @@ namespace AtPulso
 			this.label10 = new System.Windows.Forms.Label();
 			this.cbOutputMode = new System.Windows.Forms.ComboBox();
 			this.gbHeartRateSettings = new System.Windows.Forms.GroupBox();
+			this.buHeartRateThresholdColor = new System.Windows.Forms.Button();
+			this.label23 = new System.Windows.Forms.Label();
+			this.tbHeartRateThresholdColor = new System.Windows.Forms.TextBox();
+			this.nudHeartRateThreshold = new System.Windows.Forms.NumericUpDown();
+			this.label22 = new System.Windows.Forms.Label();
+			this.cbHeartRateThresholdChange = new System.Windows.Forms.CheckBox();
 			this.buHeartRateColor = new System.Windows.Forms.Button();
 			this.label9 = new System.Windows.Forms.Label();
 			this.tbHeartRateColor = new System.Windows.Forms.TextBox();
@@ -84,9 +99,11 @@ namespace AtPulso
 			this.nudServerPort = new System.Windows.Forms.NumericUpDown();
 			this.label4 = new System.Windows.Forms.Label();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
+			this.cbSoundAlert = new System.Windows.Forms.CheckBox();
+			this.cbHideAtStart = new System.Windows.Forms.CheckBox();
 			this.cbServerAutostart = new System.Windows.Forms.CheckBox();
 			this.cbRetryConnect = new System.Windows.Forms.CheckBox();
-			this.cbAutoConnectAndHide = new System.Windows.Forms.CheckBox();
+			this.cbAutoConnectAtStart = new System.Windows.Forms.CheckBox();
 			this.groupBox5 = new System.Windows.Forms.GroupBox();
 			this.tbLog = new System.Windows.Forms.TextBox();
 			this.lbLog = new System.Windows.Forms.ListBox();
@@ -95,18 +112,17 @@ namespace AtPulso
 			this.niTray = new System.Windows.Forms.NotifyIcon(this.components);
 			this.tiClose = new System.Windows.Forms.Timer(this.components);
 			this.tiHideOnStart = new System.Windows.Forms.Timer(this.components);
-			this.label19 = new System.Windows.Forms.Label();
-			this.tbAnimFilter = new System.Windows.Forms.TextBox();
-			this.buOpenFilterPage = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.groupBox6.SuspendLayout();
 			this.gbChartSettings.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nudChartLineThickness)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.nudChartDotsCount)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.nudChartWidth)).BeginInit();
 			this.gbAnimationSettings.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.nudAnimSpeedMultiplier)).BeginInit();
 			this.gbHeartRateSettings.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nudHeartRateThreshold)).BeginInit();
 			this.groupBox3.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.nudServerPort)).BeginInit();
 			this.groupBox4.SuspendLayout();
@@ -127,7 +143,7 @@ namespace AtPulso
 			this.groupBox1.Controls.Add(this.label3);
 			this.groupBox1.Controls.Add(this.label2);
 			this.groupBox1.Controls.Add(this.label1);
-			this.groupBox1.Location = new System.Drawing.Point(12, 108);
+			this.groupBox1.Location = new System.Drawing.Point(12, 151);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Size = new System.Drawing.Size(215, 198);
 			this.groupBox1.TabIndex = 0;
@@ -262,6 +278,9 @@ namespace AtPulso
 			this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox2.Controls.Add(this.buOpenCssFontPage);
+			this.groupBox2.Controls.Add(this.tbFontFamily);
+			this.groupBox2.Controls.Add(this.label21);
 			this.groupBox2.Controls.Add(this.groupBox6);
 			this.groupBox2.Controls.Add(this.gbChartSettings);
 			this.groupBox2.Controls.Add(this.gbAnimationSettings);
@@ -272,20 +291,51 @@ namespace AtPulso
 			this.groupBox2.Controls.Add(this.gbHeartRateSettings);
 			this.groupBox2.Location = new System.Drawing.Point(233, 12);
 			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(361, 615);
+			this.groupBox2.Size = new System.Drawing.Size(361, 621);
 			this.groupBox2.TabIndex = 1;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Output Settings";
 			// 
+			// buOpenCssFontPage
+			// 
+			this.buOpenCssFontPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.buOpenCssFontPage.Location = new System.Drawing.Point(334, 71);
+			this.buOpenCssFontPage.Name = "buOpenCssFontPage";
+			this.buOpenCssFontPage.Size = new System.Drawing.Size(21, 20);
+			this.buOpenCssFontPage.TabIndex = 20;
+			this.buOpenCssFontPage.Text = "?";
+			this.buOpenCssFontPage.UseVisualStyleBackColor = true;
+			this.buOpenCssFontPage.Click += new System.EventHandler(this.buOpenCssFontPage_Click);
+			// 
+			// tbFontFamily
+			// 
+			this.tbFontFamily.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbFontFamily.Location = new System.Drawing.Point(142, 71);
+			this.tbFontFamily.Name = "tbFontFamily";
+			this.tbFontFamily.Size = new System.Drawing.Size(186, 20);
+			this.tbFontFamily.TabIndex = 19;
+			this.tbFontFamily.Text = "cursive";
+			this.tbFontFamily.TextChanged += new System.EventHandler(this.tbFontFamily_TextChanged);
+			// 
+			// label21
+			// 
+			this.label21.AutoSize = true;
+			this.label21.Location = new System.Drawing.Point(6, 74);
+			this.label21.Name = "label21";
+			this.label21.Size = new System.Drawing.Size(130, 13);
+			this.label21.TabIndex = 18;
+			this.label21.Text = "Override font-family (CSS):";
+			// 
 			// groupBox6
 			// 
-			this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupBox6.Controls.Add(this.label18);
 			this.groupBox6.Controls.Add(this.label15);
 			this.groupBox6.Controls.Add(this.tbObsWidth);
 			this.groupBox6.Controls.Add(this.label14);
-			this.groupBox6.Location = new System.Drawing.Point(9, 389);
+			this.groupBox6.Location = new System.Drawing.Point(9, 523);
 			this.groupBox6.Name = "groupBox6";
 			this.groupBox6.Size = new System.Drawing.Size(346, 88);
 			this.groupBox6.TabIndex = 12;
@@ -333,6 +383,9 @@ namespace AtPulso
 			// 
 			this.gbChartSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.gbChartSettings.Controls.Add(this.cbChartLineSmooth);
+			this.gbChartSettings.Controls.Add(this.nudChartLineThickness);
+			this.gbChartSettings.Controls.Add(this.label20);
 			this.gbChartSettings.Controls.Add(this.nudChartDotsCount);
 			this.gbChartSettings.Controls.Add(this.buMinMaxColor);
 			this.gbChartSettings.Controls.Add(this.label6);
@@ -343,12 +396,55 @@ namespace AtPulso
 			this.gbChartSettings.Controls.Add(this.tbLineColor);
 			this.gbChartSettings.Controls.Add(this.label7);
 			this.gbChartSettings.Controls.Add(this.tbMinMaxColor);
-			this.gbChartSettings.Location = new System.Drawing.Point(9, 71);
+			this.gbChartSettings.Location = new System.Drawing.Point(9, 118);
 			this.gbChartSettings.Name = "gbChartSettings";
-			this.gbChartSettings.Size = new System.Drawing.Size(346, 127);
+			this.gbChartSettings.Size = new System.Drawing.Size(346, 150);
 			this.gbChartSettings.TabIndex = 11;
 			this.gbChartSettings.TabStop = false;
 			this.gbChartSettings.Text = "Chart Settings";
+			// 
+			// cbChartLineSmooth
+			// 
+			this.cbChartLineSmooth.AutoSize = true;
+			this.cbChartLineSmooth.Location = new System.Drawing.Point(181, 124);
+			this.cbChartLineSmooth.Name = "cbChartLineSmooth";
+			this.cbChartLineSmooth.Size = new System.Drawing.Size(85, 17);
+			this.cbChartLineSmooth.TabIndex = 13;
+			this.cbChartLineSmooth.Text = "Smooth Line";
+			this.cbChartLineSmooth.UseVisualStyleBackColor = true;
+			this.cbChartLineSmooth.CheckedChanged += new System.EventHandler(this.cbChartLineSmooth_CheckedChanged);
+			// 
+			// nudChartLineThickness
+			// 
+			this.nudChartLineThickness.Location = new System.Drawing.Point(98, 123);
+			this.nudChartLineThickness.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+			this.nudChartLineThickness.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.nudChartLineThickness.Name = "nudChartLineThickness";
+			this.nudChartLineThickness.Size = new System.Drawing.Size(71, 20);
+			this.nudChartLineThickness.TabIndex = 12;
+			this.nudChartLineThickness.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.nudChartLineThickness.ValueChanged += new System.EventHandler(this.nudChartLineWidth_ValueChanged);
+			// 
+			// label20
+			// 
+			this.label20.AutoSize = true;
+			this.label20.Location = new System.Drawing.Point(6, 125);
+			this.label20.Name = "label20";
+			this.label20.Size = new System.Drawing.Size(82, 13);
+			this.label20.TabIndex = 11;
+			this.label20.Text = "Line Thickness:";
 			// 
 			// nudChartDotsCount
 			// 
@@ -449,10 +545,10 @@ namespace AtPulso
 			// 
 			this.tbLineColor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbLineColor.Location = new System.Drawing.Point(98, 71);
+			this.tbLineColor.Location = new System.Drawing.Point(130, 71);
 			this.tbLineColor.Name = "tbLineColor";
 			this.tbLineColor.ReadOnly = true;
-			this.tbLineColor.Size = new System.Drawing.Size(175, 20);
+			this.tbLineColor.Size = new System.Drawing.Size(143, 20);
 			this.tbLineColor.TabIndex = 4;
 			// 
 			// label7
@@ -468,10 +564,10 @@ namespace AtPulso
 			// 
 			this.tbMinMaxColor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbMinMaxColor.Location = new System.Drawing.Point(98, 97);
+			this.tbMinMaxColor.Location = new System.Drawing.Point(130, 97);
 			this.tbMinMaxColor.Name = "tbMinMaxColor";
 			this.tbMinMaxColor.ReadOnly = true;
-			this.tbMinMaxColor.Size = new System.Drawing.Size(175, 20);
+			this.tbMinMaxColor.Size = new System.Drawing.Size(143, 20);
 			this.tbMinMaxColor.TabIndex = 5;
 			// 
 			// gbAnimationSettings
@@ -487,12 +583,42 @@ namespace AtPulso
 			this.gbAnimationSettings.Controls.Add(this.buAnimationSelect);
 			this.gbAnimationSettings.Controls.Add(this.tbAnimationPath);
 			this.gbAnimationSettings.Controls.Add(this.label13);
-			this.gbAnimationSettings.Location = new System.Drawing.Point(9, 265);
+			this.gbAnimationSettings.Location = new System.Drawing.Point(9, 399);
 			this.gbAnimationSettings.Name = "gbAnimationSettings";
 			this.gbAnimationSettings.Size = new System.Drawing.Size(346, 118);
 			this.gbAnimationSettings.TabIndex = 10;
 			this.gbAnimationSettings.TabStop = false;
 			this.gbAnimationSettings.Text = "Animation Settings";
+			// 
+			// buOpenFilterPage
+			// 
+			this.buOpenFilterPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.buOpenFilterPage.Location = new System.Drawing.Point(319, 84);
+			this.buOpenFilterPage.Name = "buOpenFilterPage";
+			this.buOpenFilterPage.Size = new System.Drawing.Size(21, 20);
+			this.buOpenFilterPage.TabIndex = 18;
+			this.buOpenFilterPage.Text = "?";
+			this.buOpenFilterPage.UseVisualStyleBackColor = true;
+			this.buOpenFilterPage.Click += new System.EventHandler(this.buOpenFilterPage_Click);
+			// 
+			// tbAnimFilter
+			// 
+			this.tbAnimFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbAnimFilter.Location = new System.Drawing.Point(218, 84);
+			this.tbAnimFilter.Name = "tbAnimFilter";
+			this.tbAnimFilter.Size = new System.Drawing.Size(95, 20);
+			this.tbAnimFilter.TabIndex = 17;
+			this.tbAnimFilter.TextChanged += new System.EventHandler(this.tbAnimFilter_TextChanged);
+			// 
+			// label19
+			// 
+			this.label19.AutoSize = true;
+			this.label19.Location = new System.Drawing.Point(156, 87);
+			this.label19.Name = "label19";
+			this.label19.Size = new System.Drawing.Size(56, 13);
+			this.label19.TabIndex = 16;
+			this.label19.Text = "CSS Filter:";
 			// 
 			// nudAnimSpeedMultiplier
 			// 
@@ -628,15 +754,99 @@ namespace AtPulso
 			// 
 			this.gbHeartRateSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.gbHeartRateSettings.Controls.Add(this.buHeartRateThresholdColor);
+			this.gbHeartRateSettings.Controls.Add(this.label23);
+			this.gbHeartRateSettings.Controls.Add(this.tbHeartRateThresholdColor);
+			this.gbHeartRateSettings.Controls.Add(this.nudHeartRateThreshold);
+			this.gbHeartRateSettings.Controls.Add(this.label22);
+			this.gbHeartRateSettings.Controls.Add(this.cbHeartRateThresholdChange);
 			this.gbHeartRateSettings.Controls.Add(this.buHeartRateColor);
 			this.gbHeartRateSettings.Controls.Add(this.label9);
 			this.gbHeartRateSettings.Controls.Add(this.tbHeartRateColor);
-			this.gbHeartRateSettings.Location = new System.Drawing.Point(9, 204);
+			this.gbHeartRateSettings.Location = new System.Drawing.Point(9, 274);
 			this.gbHeartRateSettings.Name = "gbHeartRateSettings";
-			this.gbHeartRateSettings.Size = new System.Drawing.Size(346, 55);
+			this.gbHeartRateSettings.Size = new System.Drawing.Size(346, 119);
 			this.gbHeartRateSettings.TabIndex = 3;
 			this.gbHeartRateSettings.TabStop = false;
 			this.gbHeartRateSettings.Text = "HeartRate Settings";
+			// 
+			// buHeartRateThresholdColor
+			// 
+			this.buHeartRateThresholdColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.buHeartRateThresholdColor.Location = new System.Drawing.Point(273, 94);
+			this.buHeartRateThresholdColor.Name = "buHeartRateThresholdColor";
+			this.buHeartRateThresholdColor.Size = new System.Drawing.Size(67, 20);
+			this.buHeartRateThresholdColor.TabIndex = 17;
+			this.buHeartRateThresholdColor.Text = "Select";
+			this.buHeartRateThresholdColor.UseVisualStyleBackColor = true;
+			this.buHeartRateThresholdColor.Click += new System.EventHandler(this.buHeartRateThresholdColor_Click);
+			// 
+			// label23
+			// 
+			this.label23.AutoSize = true;
+			this.label23.Location = new System.Drawing.Point(6, 97);
+			this.label23.Name = "label23";
+			this.label23.Size = new System.Drawing.Size(118, 13);
+			this.label23.TabIndex = 16;
+			this.label23.Text = "Threshold Above Color:";
+			// 
+			// tbHeartRateThresholdColor
+			// 
+			this.tbHeartRateThresholdColor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbHeartRateThresholdColor.Location = new System.Drawing.Point(130, 94);
+			this.tbHeartRateThresholdColor.Name = "tbHeartRateThresholdColor";
+			this.tbHeartRateThresholdColor.ReadOnly = true;
+			this.tbHeartRateThresholdColor.Size = new System.Drawing.Size(143, 20);
+			this.tbHeartRateThresholdColor.TabIndex = 15;
+			// 
+			// nudHeartRateThreshold
+			// 
+			this.nudHeartRateThreshold.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+			this.nudHeartRateThreshold.Location = new System.Drawing.Point(98, 68);
+			this.nudHeartRateThreshold.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+			this.nudHeartRateThreshold.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.nudHeartRateThreshold.Name = "nudHeartRateThreshold";
+			this.nudHeartRateThreshold.Size = new System.Drawing.Size(71, 20);
+			this.nudHeartRateThreshold.TabIndex = 14;
+			this.nudHeartRateThreshold.Value = new decimal(new int[] {
+            120,
+            0,
+            0,
+            0});
+			this.nudHeartRateThreshold.ValueChanged += new System.EventHandler(this.nudHeartRateThreshold_ValueChanged);
+			// 
+			// label22
+			// 
+			this.label22.AutoSize = true;
+			this.label22.Location = new System.Drawing.Point(6, 70);
+			this.label22.Name = "label22";
+			this.label22.Size = new System.Drawing.Size(83, 13);
+			this.label22.TabIndex = 13;
+			this.label22.Text = "Threshold BPM:";
+			// 
+			// cbHeartRateThresholdChange
+			// 
+			this.cbHeartRateThresholdChange.AutoSize = true;
+			this.cbHeartRateThresholdChange.Location = new System.Drawing.Point(9, 45);
+			this.cbHeartRateThresholdChange.Name = "cbHeartRateThresholdChange";
+			this.cbHeartRateThresholdChange.Size = new System.Drawing.Size(149, 17);
+			this.cbHeartRateThresholdChange.TabIndex = 12;
+			this.cbHeartRateThresholdChange.Text = "Change color by threshold";
+			this.cbHeartRateThresholdChange.UseVisualStyleBackColor = true;
+			this.cbHeartRateThresholdChange.CheckedChanged += new System.EventHandler(this.cbHeartRateThresholdChange_CheckedChanged);
 			// 
 			// buHeartRateColor
 			// 
@@ -662,10 +872,10 @@ namespace AtPulso
 			// 
 			this.tbHeartRateColor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbHeartRateColor.Location = new System.Drawing.Point(98, 19);
+			this.tbHeartRateColor.Location = new System.Drawing.Point(130, 19);
 			this.tbHeartRateColor.Name = "tbHeartRateColor";
 			this.tbHeartRateColor.ReadOnly = true;
-			this.tbHeartRateColor.Size = new System.Drawing.Size(175, 20);
+			this.tbHeartRateColor.Size = new System.Drawing.Size(143, 20);
 			this.tbHeartRateColor.TabIndex = 6;
 			// 
 			// groupBox3
@@ -676,7 +886,7 @@ namespace AtPulso
 			this.groupBox3.Controls.Add(this.label5);
 			this.groupBox3.Controls.Add(this.nudServerPort);
 			this.groupBox3.Controls.Add(this.label4);
-			this.groupBox3.Location = new System.Drawing.Point(12, 323);
+			this.groupBox3.Location = new System.Drawing.Point(12, 355);
 			this.groupBox3.Name = "groupBox3";
 			this.groupBox3.Size = new System.Drawing.Size(215, 100);
 			this.groupBox3.TabIndex = 2;
@@ -755,22 +965,48 @@ namespace AtPulso
 			// 
 			// groupBox4
 			// 
+			this.groupBox4.Controls.Add(this.cbSoundAlert);
+			this.groupBox4.Controls.Add(this.cbHideAtStart);
 			this.groupBox4.Controls.Add(this.cbServerAutostart);
 			this.groupBox4.Controls.Add(this.cbRetryConnect);
-			this.groupBox4.Controls.Add(this.cbAutoConnectAndHide);
+			this.groupBox4.Controls.Add(this.cbAutoConnectAtStart);
 			this.groupBox4.Location = new System.Drawing.Point(12, 12);
 			this.groupBox4.Name = "groupBox4";
-			this.groupBox4.Size = new System.Drawing.Size(215, 89);
+			this.groupBox4.Size = new System.Drawing.Size(215, 133);
 			this.groupBox4.TabIndex = 3;
 			this.groupBox4.TabStop = false;
 			this.groupBox4.Text = "App Settings";
+			// 
+			// cbSoundAlert
+			// 
+			this.cbSoundAlert.AutoSize = true;
+			this.cbSoundAlert.Checked = true;
+			this.cbSoundAlert.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.cbSoundAlert.Location = new System.Drawing.Point(6, 111);
+			this.cbSoundAlert.Name = "cbSoundAlert";
+			this.cbSoundAlert.Size = new System.Drawing.Size(176, 17);
+			this.cbSoundAlert.TabIndex = 4;
+			this.cbSoundAlert.Text = "Sound alert when disconnected";
+			this.cbSoundAlert.UseVisualStyleBackColor = true;
+			this.cbSoundAlert.CheckedChanged += new System.EventHandler(this.cbSoundAlert_CheckedChanged);
+			// 
+			// cbHideAtStart
+			// 
+			this.cbHideAtStart.AutoSize = true;
+			this.cbHideAtStart.Location = new System.Drawing.Point(6, 42);
+			this.cbHideAtStart.Name = "cbHideAtStart";
+			this.cbHideAtStart.Size = new System.Drawing.Size(115, 17);
+			this.cbHideAtStart.TabIndex = 3;
+			this.cbHideAtStart.Text = "Hide to tray at start";
+			this.cbHideAtStart.UseVisualStyleBackColor = true;
+			this.cbHideAtStart.CheckedChanged += new System.EventHandler(this.cbHideAtStart_CheckedChanged);
 			// 
 			// cbServerAutostart
 			// 
 			this.cbServerAutostart.AutoSize = true;
 			this.cbServerAutostart.Checked = true;
 			this.cbServerAutostart.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.cbServerAutostart.Location = new System.Drawing.Point(6, 65);
+			this.cbServerAutostart.Location = new System.Drawing.Point(6, 88);
 			this.cbServerAutostart.Name = "cbServerAutostart";
 			this.cbServerAutostart.Size = new System.Drawing.Size(183, 17);
 			this.cbServerAutostart.TabIndex = 2;
@@ -781,24 +1017,24 @@ namespace AtPulso
 			// cbRetryConnect
 			// 
 			this.cbRetryConnect.AutoSize = true;
-			this.cbRetryConnect.Location = new System.Drawing.Point(6, 42);
+			this.cbRetryConnect.Location = new System.Drawing.Point(6, 65);
 			this.cbRetryConnect.Name = "cbRetryConnect";
-			this.cbRetryConnect.Size = new System.Drawing.Size(150, 17);
+			this.cbRetryConnect.Size = new System.Drawing.Size(192, 17);
 			this.cbRetryConnect.TabIndex = 1;
-			this.cbRetryConnect.Text = "Retry connect when failed";
+			this.cbRetryConnect.Text = "Retry connect when failed (5 times)";
 			this.cbRetryConnect.UseVisualStyleBackColor = true;
 			this.cbRetryConnect.CheckedChanged += new System.EventHandler(this.cbRetryConnect_CheckedChanged);
 			// 
-			// cbAutoConnectAndHide
+			// cbAutoConnectAtStart
 			// 
-			this.cbAutoConnectAndHide.AutoSize = true;
-			this.cbAutoConnectAndHide.Location = new System.Drawing.Point(6, 19);
-			this.cbAutoConnectAndHide.Name = "cbAutoConnectAndHide";
-			this.cbAutoConnectAndHide.Size = new System.Drawing.Size(205, 17);
-			this.cbAutoConnectAndHide.TabIndex = 0;
-			this.cbAutoConnectAndHide.Text = "AutoConnect and Hide to Tray at start";
-			this.cbAutoConnectAndHide.UseVisualStyleBackColor = true;
-			this.cbAutoConnectAndHide.CheckedChanged += new System.EventHandler(this.cbAutoConnectAndHide_CheckedChanged);
+			this.cbAutoConnectAtStart.AutoSize = true;
+			this.cbAutoConnectAtStart.Location = new System.Drawing.Point(6, 19);
+			this.cbAutoConnectAtStart.Name = "cbAutoConnectAtStart";
+			this.cbAutoConnectAtStart.Size = new System.Drawing.Size(123, 17);
+			this.cbAutoConnectAtStart.TabIndex = 0;
+			this.cbAutoConnectAtStart.Text = "AutoConnect at start";
+			this.cbAutoConnectAtStart.UseVisualStyleBackColor = true;
+			this.cbAutoConnectAtStart.CheckedChanged += new System.EventHandler(this.cbAutoConnectAndHide_CheckedChanged);
 			// 
 			// groupBox5
 			// 
@@ -806,9 +1042,9 @@ namespace AtPulso
             | System.Windows.Forms.AnchorStyles.Left)));
 			this.groupBox5.Controls.Add(this.tbLog);
 			this.groupBox5.Controls.Add(this.lbLog);
-			this.groupBox5.Location = new System.Drawing.Point(12, 429);
+			this.groupBox5.Location = new System.Drawing.Point(12, 461);
 			this.groupBox5.Name = "groupBox5";
-			this.groupBox5.Size = new System.Drawing.Size(215, 198);
+			this.groupBox5.Size = new System.Drawing.Size(215, 172);
 			this.groupBox5.TabIndex = 4;
 			this.groupBox5.TabStop = false;
 			this.groupBox5.Text = "Log";
@@ -831,7 +1067,7 @@ namespace AtPulso
 			this.lbLog.FormattingEnabled = true;
 			this.lbLog.Location = new System.Drawing.Point(6, 45);
 			this.lbLog.Name = "lbLog";
-			this.lbLog.Size = new System.Drawing.Size(203, 147);
+			this.lbLog.Size = new System.Drawing.Size(203, 108);
 			this.lbLog.TabIndex = 0;
 			this.lbLog.Click += new System.EventHandler(this.lbLog_Click);
 			// 
@@ -856,41 +1092,11 @@ namespace AtPulso
 			this.tiHideOnStart.Interval = 1000;
 			this.tiHideOnStart.Tick += new System.EventHandler(this.tiHideOnStart_Tick);
 			// 
-			// label19
-			// 
-			this.label19.AutoSize = true;
-			this.label19.Location = new System.Drawing.Point(156, 87);
-			this.label19.Name = "label19";
-			this.label19.Size = new System.Drawing.Size(56, 13);
-			this.label19.TabIndex = 16;
-			this.label19.Text = "CSS Filter:";
-			// 
-			// tbAnimFilter
-			// 
-			this.tbAnimFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbAnimFilter.Location = new System.Drawing.Point(218, 84);
-			this.tbAnimFilter.Name = "tbAnimFilter";
-			this.tbAnimFilter.Size = new System.Drawing.Size(95, 20);
-			this.tbAnimFilter.TabIndex = 17;
-			this.tbAnimFilter.TextChanged += new System.EventHandler(this.tbAnimFilter_TextChanged);
-			// 
-			// buOpenFilterPage
-			// 
-			this.buOpenFilterPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.buOpenFilterPage.Location = new System.Drawing.Point(319, 84);
-			this.buOpenFilterPage.Name = "buOpenFilterPage";
-			this.buOpenFilterPage.Size = new System.Drawing.Size(21, 20);
-			this.buOpenFilterPage.TabIndex = 18;
-			this.buOpenFilterPage.Text = "?";
-			this.buOpenFilterPage.UseVisualStyleBackColor = true;
-			this.buOpenFilterPage.Click += new System.EventHandler(this.buOpenFilterPage_Click);
-			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(606, 641);
+			this.ClientSize = new System.Drawing.Size(606, 647);
 			this.Controls.Add(this.groupBox5);
 			this.Controls.Add(this.groupBox4);
 			this.Controls.Add(this.groupBox3);
@@ -910,6 +1116,7 @@ namespace AtPulso
 			this.groupBox6.PerformLayout();
 			this.gbChartSettings.ResumeLayout(false);
 			this.gbChartSettings.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nudChartLineThickness)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.nudChartDotsCount)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.nudChartWidth)).EndInit();
 			this.gbAnimationSettings.ResumeLayout(false);
@@ -917,6 +1124,7 @@ namespace AtPulso
 			((System.ComponentModel.ISupportInitialize)(this.nudAnimSpeedMultiplier)).EndInit();
 			this.gbHeartRateSettings.ResumeLayout(false);
 			this.gbHeartRateSettings.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nudHeartRateThreshold)).EndInit();
 			this.groupBox3.ResumeLayout(false);
 			this.groupBox3.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.nudServerPort)).EndInit();
@@ -946,7 +1154,7 @@ namespace AtPulso
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.GroupBox groupBox4;
 		private System.Windows.Forms.CheckBox cbRetryConnect;
-		private System.Windows.Forms.CheckBox cbAutoConnectAndHide;
+		private System.Windows.Forms.CheckBox cbAutoConnectAtStart;
 		private System.Windows.Forms.GroupBox groupBox5;
 		private System.Windows.Forms.TextBox tbLog;
 		private System.Windows.Forms.ListBox lbLog;
@@ -997,6 +1205,20 @@ namespace AtPulso
 		private System.Windows.Forms.TextBox tbAnimFilter;
 		private System.Windows.Forms.Label label19;
 		private System.Windows.Forms.Button buOpenFilterPage;
+		private System.Windows.Forms.Button buOpenCssFontPage;
+		private System.Windows.Forms.TextBox tbFontFamily;
+		private System.Windows.Forms.Label label21;
+		private System.Windows.Forms.CheckBox cbChartLineSmooth;
+		private System.Windows.Forms.NumericUpDown nudChartLineThickness;
+		private System.Windows.Forms.Label label20;
+		private System.Windows.Forms.CheckBox cbHideAtStart;
+		private System.Windows.Forms.CheckBox cbSoundAlert;
+		private System.Windows.Forms.Button buHeartRateThresholdColor;
+		private System.Windows.Forms.Label label23;
+		private System.Windows.Forms.TextBox tbHeartRateThresholdColor;
+		private System.Windows.Forms.NumericUpDown nudHeartRateThreshold;
+		private System.Windows.Forms.Label label22;
+		private System.Windows.Forms.CheckBox cbHeartRateThresholdChange;
 	}
 }
 

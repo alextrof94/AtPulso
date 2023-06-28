@@ -20,7 +20,7 @@ namespace AtPulso
 {
 	public partial class Form1 : Form
 	{
-		private string version = "1.2";
+		private string version = "1.3";
 
 		public ObservableCollection<WatcherDevice> devices = new ObservableCollection<WatcherDevice>();
 		private HeartRateMonitor _heartRateMonitor = new HeartRateMonitor();
@@ -33,6 +33,8 @@ namespace AtPulso
 		CancellationToken serverStopToken;
 
 		bool disconnectedByButton = false;
+
+		WMPLib.WindowsMediaPlayer wplayer = new WMPLib.WindowsMediaPlayer();
 
 		public Form1()
 		{
@@ -62,9 +64,11 @@ namespace AtPulso
 		private void Form1_Shown(object sender, EventArgs e)
 		{
 			this.Text = String.Format("AtPulso by GoodVrGames v{0}", version);
-			cbAutoConnectAndHide.Checked = Properties.Settings.Default.AutoConnectAndHideToTray;
+			cbAutoConnectAtStart.Checked = Properties.Settings.Default.AutoConnectAtStart;
+			cbHideAtStart.Checked = Properties.Settings.Default.HideAtStart;
 			cbRetryConnect.Checked = Properties.Settings.Default.RetryConnectWhenFailed;
 			cbServerAutostart.Checked = Properties.Settings.Default.AutoStartServerWhenConnected;
+			cbSoundAlert.Checked = Properties.Settings.Default.SoundAlert;
 
 			tbDeviceId.Text = Properties.Settings.Default.BleDeviceId;
 
@@ -72,13 +76,19 @@ namespace AtPulso
 
 			cbOutputMode.SelectedIndex = Properties.Settings.Default.OutputMode;
 			cbOutputOrientation.SelectedIndex = Properties.Settings.Default.OutputOrientation;
+			tbFontFamily.Text = Properties.Settings.Default.FontFamily;
 
 			tbHeartRateColor.Text = Properties.Settings.Default.HeartRateColor;
+			tbHeartRateThresholdColor.Text = Properties.Settings.Default.HeartRateThresholdColor;
+			cbHeartRateThresholdChange.Checked = Properties.Settings.Default.HeartRateThresholdChange;
+			nudHeartRateThreshold.Value = Properties.Settings.Default.HeartRateThreshold;
 
 			nudChartDotsCount.Value = Properties.Settings.Default.ChartDotsCount;
 			nudChartWidth.Value = Properties.Settings.Default.ChartWidth;
 			tbLineColor.Text = Properties.Settings.Default.LineColor;
 			tbMinMaxColor.Text = Properties.Settings.Default.MinMaxColor;
+			nudChartLineThickness.Value = Properties.Settings.Default.ChartLineThickness;
+			cbChartLineSmooth.Checked = Properties.Settings.Default.ChartLineSmooth;
 
 			tbAnimationPath.Text = Properties.Settings.Default.AnimationPath;
 			nudAnimSpeedMultiplier.Value = Properties.Settings.Default.AnimationSpeedMultiplier;
@@ -93,19 +103,24 @@ namespace AtPulso
 			//_heartRateMonitor.RateChanged -= HrParserOnValueChanged;
 			_heartRateMonitor.RateChanged += HrParserOnValueChanged;
 
-			if (Properties.Settings.Default.AutoConnectAndHideToTray)
+			if (Properties.Settings.Default.AutoConnectAtStart)
 			{
 				if (!string.IsNullOrEmpty(Properties.Settings.Default.BleDeviceId))
 				{
 					ConnectToBt();
-					tiHideOnStart.Start();
+					if (Properties.Settings.Default.HideAtStart)
+					{
+						tiHideOnStart.Start();
+					}
 				}
 			}
 		}
 
+		#region UIAppSettings
+
 		private void cbAutoConnectAndHide_CheckedChanged(object sender, EventArgs e)
 		{
-			Properties.Settings.Default.AutoConnectAndHideToTray = cbAutoConnectAndHide.Checked;
+			Properties.Settings.Default.AutoConnectAtStart = cbAutoConnectAtStart.Checked;
 			Properties.Settings.Default.Save();
 		}
 
@@ -121,11 +136,31 @@ namespace AtPulso
 			Properties.Settings.Default.Save();
 		}
 
+		private void cbHideAtStart_CheckedChanged(object sender, EventArgs e)
+		{
+			Properties.Settings.Default.HideAtStart = cbHideAtStart.Checked;
+			Properties.Settings.Default.Save();
+		}
+
+		private void cbSoundAlert_CheckedChanged(object sender, EventArgs e)
+		{
+			Properties.Settings.Default.SoundAlert = cbSoundAlert.Checked;
+			Properties.Settings.Default.Save();
+		}
+
+		#endregion
+
+		#region UIServerSettings
+
 		private void nudServerPort_ValueChanged(object sender, EventArgs e)
 		{
 			Properties.Settings.Default.ServerPort = (int)nudServerPort.Value;
 			Properties.Settings.Default.Save();
 		}
+
+		#endregion
+
+		#region UIOutputSettings
 
 		private void cbOutputMode_SelectedIndexChanged(object sender, EventArgs e)
 		{
@@ -146,6 +181,29 @@ namespace AtPulso
 			Properties.Settings.Default.OutputOrientation = cbOutputOrientation.SelectedIndex;
 			Properties.Settings.Default.Save();
 		}
+
+		bool tbFontFamily_TextChangedByCode = false;
+		private void tbFontFamily_TextChanged(object sender, EventArgs e)
+		{
+			if (tbFontFamily_TextChangedByCode)
+			{
+				tbFontFamily_TextChangedByCode = false;
+				return;
+			}
+			if (string.IsNullOrEmpty(tbFontFamily.Text))
+			{
+				tbFontFamily_TextChangedByCode = true;
+				tbFontFamily.Text = "cursive";
+			}
+			Properties.Settings.Default.FontFamily = tbFontFamily.Text;
+			Properties.Settings.Default.Save();
+		}
+
+		private void buOpenCssFontPage_Click(object sender, EventArgs e)
+		{
+			System.Diagnostics.Process.Start("https://www.w3schools.com/css/css_font.asp");
+		}
+
 
 		private void nudChartDotsCount_ValueChanged(object sender, EventArgs e)
 		{
@@ -184,6 +242,19 @@ namespace AtPulso
 			}
 		}
 
+		private void nudChartLineWidth_ValueChanged(object sender, EventArgs e)
+		{
+			Properties.Settings.Default.ChartLineThickness = nudChartLineThickness.Value;
+			Properties.Settings.Default.Save();
+		}
+
+		private void cbChartLineSmooth_CheckedChanged(object sender, EventArgs e)
+		{
+			Properties.Settings.Default.ChartLineSmooth = cbChartLineSmooth.Checked;
+			Properties.Settings.Default.Save();
+		}
+
+
 		private void buHeartRateColor_Click(object sender, EventArgs e)
 		{
 			if (cdSelectColor.ShowDialog() == DialogResult.OK)
@@ -195,6 +266,31 @@ namespace AtPulso
 				Properties.Settings.Default.Save();
 			}
 		}
+
+		private void cbHeartRateThresholdChange_CheckedChanged(object sender, EventArgs e)
+		{
+			Properties.Settings.Default.HeartRateThresholdChange = cbHeartRateThresholdChange.Checked;
+			Properties.Settings.Default.Save();
+		}
+
+		private void nudHeartRateThreshold_ValueChanged(object sender, EventArgs e)
+		{
+			Properties.Settings.Default.HeartRateThreshold = nudHeartRateThreshold.Value;
+			Properties.Settings.Default.Save();
+		}
+
+		private void buHeartRateThresholdColor_Click(object sender, EventArgs e)
+		{
+			if (cdSelectColor.ShowDialog() == DialogResult.OK)
+			{
+				byte[] input = new byte[] { cdSelectColor.Color.R, cdSelectColor.Color.G, cdSelectColor.Color.B };
+				string output = "#" + BitConverter.ToString(input).Replace("-", "");
+				tbHeartRateThresholdColor.Text = output;
+				Properties.Settings.Default.HeartRateThresholdColor = output;
+				Properties.Settings.Default.Save();
+			}
+		}
+
 
 		private void buAnimationSelect_Click(object sender, EventArgs e)
 		{
@@ -213,11 +309,26 @@ namespace AtPulso
 			tbAnimationPath.Text = "";
 		}
 
+		private void nudAnimSpeedMultiplier_ValueChanged(object sender, EventArgs e)
+		{
+			Properties.Settings.Default.AnimationSpeedMultiplier = nudAnimSpeedMultiplier.Value;
+			Properties.Settings.Default.Save();
+		}
+
 		private void tbAnimFilter_TextChanged(object sender, EventArgs e)
 		{
 			Properties.Settings.Default.AnimationFilter = tbAnimFilter.Text;
 			Properties.Settings.Default.Save();
 		}
+
+		private void buOpenFilterPage_Click(object sender, EventArgs e)
+		{
+			System.Diagnostics.Process.Start("https://codepen.io/sosuke/pen/Pjoqqp");
+		}
+
+		#endregion
+
+		#region Device
 
 		private void buDeviceConnect_Click(object sender, EventArgs e)
 		{
@@ -265,6 +376,9 @@ namespace AtPulso
 			Properties.Settings.Default.BleDeviceId = "";
 			Properties.Settings.Default.Save();
 		}
+
+		#endregion
+
 
 		private void buStartServer_Click(object sender, EventArgs e)
 		{
@@ -314,12 +428,6 @@ namespace AtPulso
 		{
 			this.WindowState = FormWindowState.Minimized;
 			tiHideOnStart.Stop();
-		}
-
-		private void nudAnimSpeedMultiplier_ValueChanged(object sender, EventArgs e)
-		{
-			Properties.Settings.Default.AnimationSpeedMultiplier = nudAnimSpeedMultiplier.Value;
-			Properties.Settings.Default.Save();
 		}
 
 		private void HrParserOnValueChanged(object sender, RateChangedEventArgs e)
@@ -387,6 +495,8 @@ namespace AtPulso
 					buDeviceConnect.Enabled = true;
 					buDeviceGetInfo.Enabled = false;
 					buDeviceDisconnect.Enabled = false;
+					if (!disconnectedByButton && !Properties.Settings.Default.RetryConnectWhenFailed)
+						PlaySoundAlert();
 				});
 				if (Properties.Settings.Default.RetryConnectWhenFailed)
 				{
@@ -427,30 +537,35 @@ namespace AtPulso
 				if (!connectResult.IsConnected)
 				{
 					Log(connectResult.ErrorMessage);
-					tbDeviceStatus.Text = "Error";
-					if (Properties.Settings.Default.RetryConnectWhenFailed)
+					this.Invoke((MethodInvoker)delegate
 					{
-						if (tryNow > 3)
+						tbDeviceStatus.Text = "Error";
+						if (Properties.Settings.Default.RetryConnectWhenFailed)
 						{
-							Properties.Settings.Default.BleDeviceId = "";
-							Properties.Settings.Default.AutoConnectAndHideToTray = false;
-							Properties.Settings.Default.Save();
-							cbAutoConnectAndHide.Checked = false;
-							tbDeviceId.Text = "";
-							Log("Stop trying to Reconnect after 5 times");
+							if (tryNow > 3)
+							{
+								Properties.Settings.Default.BleDeviceId = "";
+								Properties.Settings.Default.AutoConnectAtStart = false;
+								Properties.Settings.Default.Save();
+								cbAutoConnectAtStart.Checked = false;
+								tbDeviceId.Text = "";
+								Log("Stop trying to Reconnect after 5 times");
+								PlaySoundAlert();
+								return;
+							}
+
+							Log("Try to Reconnect");
+							ConnectToBt(tryNow + 1);
 							return;
 						}
-
-						Log("Try to Reconnect");
-						ConnectToBt(tryNow + 1);
-						return;
-					}
-					else
-					{
-						Properties.Settings.Default.BleDeviceId = "";
-						Properties.Settings.Default.Save();
-						tbDeviceId.Text = "";
-					}
+						else
+						{
+							Properties.Settings.Default.BleDeviceId = "";
+							Properties.Settings.Default.Save();
+							tbDeviceId.Text = "";
+							PlaySoundAlert();
+						}
+					});
 				}
 			}
 			catch (Exception ex) {
@@ -633,9 +748,10 @@ namespace AtPulso
 						}
 						responseString = responseString.Replace("{position_small_numbers}", "left");
 					}
-					
+
 
 					responseString = responseString.Replace("{port}", Properties.Settings.Default.ServerPort.ToString());
+					responseString = responseString.Replace("{font_family}", Properties.Settings.Default.FontFamily);
 					responseString = responseString.Replace("{dots_width}", Properties.Settings.Default.ChartDotsCount.ToString());
 					responseString = responseString.Replace("{color_line}", Properties.Settings.Default.LineColor);
 					responseString = responseString.Replace("{color_big_number}", Properties.Settings.Default.HeartRateColor);
@@ -643,7 +759,13 @@ namespace AtPulso
 					responseString = responseString.Replace("{animation_filter}", Properties.Settings.Default.AnimationFilter);
 					//responseString = responseString.Replace("{display_mode_big_number}", showBigNumber ? "inline-block" : "none");
 					responseString = responseString.Replace("{chart_width}", Properties.Settings.Default.ChartWidth.ToString());
+					responseString = responseString.Replace("{line_thickness}", Properties.Settings.Default.ChartLineThickness.ToString());
 					responseString = responseString.Replace("{anim_speed_multiplier}", Properties.Settings.Default.AnimationSpeedMultiplier.ToString().Replace(",", "."));
+					responseString = responseString.Replace("{line_smooth}", Properties.Settings.Default.ChartLineSmooth ? "0.3" : "0");
+
+					responseString = responseString.Replace("{hr_threshold_change}", Properties.Settings.Default.HeartRateThresholdChange ? "true" : "false");
+					responseString = responseString.Replace("{hr_threshold}", Properties.Settings.Default.HeartRateThreshold.ToString());
+					responseString = responseString.Replace("{hr_threshold_color}", Properties.Settings.Default.HeartRateThresholdColor);
 
 
 
@@ -677,9 +799,23 @@ namespace AtPulso
 			}
 		}
 
-		private void buOpenFilterPage_Click(object sender, EventArgs e)
+		void PlaySoundAlert()
 		{
-			System.Diagnostics.Process.Start("https://codepen.io/sosuke/pen/Pjoqqp");
+			try
+			{
+				if (wplayer.playState == WMPLib.WMPPlayState.wmppsPlaying)
+					return;
+				if (!System.IO.File.Exists("Disconnected.mp3"))
+				{
+					System.IO.File.WriteAllBytes("Disconnected.mp3", Properties.Resources.Disconnected);
+				}
+				wplayer.URL = "Disconnected.mp3";
+				wplayer.controls.play();
+			}
+			catch (Exception ex)
+			{
+				Log(ex.Message);
+			}
 		}
 	}
 }
