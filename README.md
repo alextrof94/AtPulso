@@ -21,9 +21,9 @@ UI settings updates on the fly by reload page in browser (or widget in OBS).
 
 
 ## Animation
-For animation you need to select webm video with length of 1 sec with 1 "beat"
+For animation you need to select webm video with length of 1 sec with 1 "beat" (or use speed-multiplier)
 
-You can download animations from [animations link](https://github.com/alextrof94/AtPulso/tree/main/animations) or create your own and select it.
+You can download animations from [animations link](https://github.com/alextrof94/AtPulso/tree/main/animations) (black - uses for filters, part like "090" in name is required speed-multiplier setting) or create your own and select it.
 
 ![Preview1](https://github.com/alextrof94/AtPulso/blob/main/images/preview.gif)
 
