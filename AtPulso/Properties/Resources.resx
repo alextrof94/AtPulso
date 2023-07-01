@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Animation" xml:space="preserve">
-    <value>&lt;video id="video" width="150" height="150" style="position:absolute; left:{video_left}px; {animation_filter}" loop autoplay muted&gt;
+    <value>&lt;video id="video" width="150" height="150" class="animation" loop autoplay muted&gt;
  &lt;source src="http://localhost:{port}/video" type='video/webm'&gt;
 &lt;/video&gt;</value>
   </data>
@@ -139,6 +139,77 @@
   </data>
   <data name="ChartJsHeader" xml:space="preserve">
     <value>&lt;script src="http://localhost:{port}/chartjs"&gt;&lt;/script&gt;</value>
+  </data>
+  <data name="Css" xml:space="preserve">
+    <value>&lt;style&gt;
+.chess {
+	background-image: linear-gradient(45deg, #888 25%, transparent 25%), linear-gradient(-45deg, #888 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #888 75%), linear-gradient(-45deg, transparent 75%, #888 75%);
+	background-size: 20px 20px;
+	background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+	background-color: #aaa !important;
+}
+
+.animation {
+	position:absolute; 
+	left:{video_left}px; 
+	{animation_filter}
+}
+
+.hr_wrapper {
+	left: {left_big_number}px;
+	width: 150px;	
+    display: inline-block;
+    top: 0;
+    position: absolute;
+}
+
+.hr_svg {
+	
+}
+
+.hr {
+    line-height: 150px;
+    vertical-align: middle;
+    font-size: {hr_fontsize}px;
+	color: {color_big_number};
+	fill: {color_big_number};
+	text-align: center;
+}
+
+.hr_high {
+	color: {hr_threshold_color} !important;	
+	fill: {hr_threshold_color} !important;	
+}
+
+.hr.glow {
+	text-shadow:
+		0 0 calc({hr_fontsize}px / 10) {color_big_number},
+		0 0 calc({hr_fontsize}px / 5) {color_big_number},
+		0 0 calc({hr_fontsize}px / 2.5) {color_big_number};	
+}
+
+.hr_high.glow {
+	text-shadow:
+		0 0 calc({hr_fontsize}px / 10) {hr_threshold_color},
+		0 0 calc({hr_fontsize}px / 5) {hr_threshold_color},
+		0 0 calc({hr_fontsize}px / 2.5) !important;
+}
+
+.hr.black_border {
+  stroke: black;
+  stroke-width: calc({hr_fontsize}px / 10);
+  stroke-linejoin: round;
+  paint-order: stroke;
+}
+
+.hr.white_border {
+  stroke: white;
+  stroke-width: calc({hr_fontsize}px / 10);
+  stroke-linejoin: round;
+  paint-order: stroke;
+}
+
+&lt;/style&gt;</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="Disconnected" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -453,36 +524,17 @@
 &lt;/script&gt;</value>
   </data>
   <data name="HR" xml:space="preserve">
-    <value>&lt;span id="nowPulse" style="
-	left: {left_big_number}px;
-    line-height: 150px;
-    vertical-align: middle;
-    font-size: 50px;
-	color: {color_big_number};
-    display: inline-block;
-    top: 0;
-    position: absolute;
-	text-align: center;
-	width: 100px;
-	text-shadow:
-		0 0 7px {color_big_number},
-		0 0 10px {color_big_number},
-		0 0 21px {color_big_number};
-"&gt;&lt;/span&gt;</value>
+    <value>&lt;div class="hr_wrapper"&gt;
+	&lt;svg viewBox="0 0 150 150" class="hr_svg"&gt;
+		&lt;text id="nowPulse" class="hr {hr_style}" x="75" y="{hr_fontbottom}" text-anchor="middle"&gt;50&lt;/text&gt;
+	&lt;/svg&gt;
+&lt;/div&gt;</value>
   </data>
   <data name="MainPage" xml:space="preserve">
     <value>&lt;html&gt;
 &lt;head&gt;
+{style_header}
 {chart_header}
-&lt;style&gt;
-.hr_high {
-	color: {hr_threshold_color} !important;
-	text-shadow:
-		0 0 7px {hr_threshold_color},
-		0 0 10px {hr_threshold_color},
-		0 0 21px {hr_threshold_color} !important;
-}
-&lt;/style&gt;
 &lt;/head&gt;
 &lt;body style="background-color: rgba(0, 0, 0, 0); margin: 0px auto; overflow: hidden; font-family: {font_family}"&gt;
 {main_container}

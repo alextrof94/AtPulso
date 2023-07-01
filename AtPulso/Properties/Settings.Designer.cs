@@ -26,9 +26,9 @@ namespace AtPulso.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool AutoConnectAtStart {
+        public string AutoConnectAtStart {
             get {
-                return ((bool)(this["AutoConnectAtStart"]));
+                return ((string)(this["AutoConnectAtStart"]));
             }
             set {
                 this["AutoConnectAtStart"] = value;
@@ -38,9 +38,9 @@ namespace AtPulso.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool RetryConnectWhenFailed {
+        public string RetryConnectWhenFailed {
             get {
-                return ((bool)(this["RetryConnectWhenFailed"]));
+                return ((string)(this["RetryConnectWhenFailed"]));
             }
             set {
                 this["RetryConnectWhenFailed"] = value;
@@ -50,9 +50,9 @@ namespace AtPulso.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool AutoStartServerWhenConnected {
+        public string AutoStartServerWhenConnected {
             get {
-                return ((bool)(this["AutoStartServerWhenConnected"]));
+                return ((string)(this["AutoStartServerWhenConnected"]));
             }
             set {
                 this["AutoStartServerWhenConnected"] = value;
@@ -62,9 +62,9 @@ namespace AtPulso.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("10110")]
-        public int ServerPort {
+        public string ServerPort {
             get {
-                return ((int)(this["ServerPort"]));
+                return ((string)(this["ServerPort"]));
             }
             set {
                 this["ServerPort"] = value;
@@ -74,9 +74,9 @@ namespace AtPulso.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int OutputMode {
+        public string OutputMode {
             get {
-                return ((int)(this["OutputMode"]));
+                return ((string)(this["OutputMode"]));
             }
             set {
                 this["OutputMode"] = value;
@@ -86,9 +86,9 @@ namespace AtPulso.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int OutputOrientation {
+        public string OutputOrientation {
             get {
-                return ((int)(this["OutputOrientation"]));
+                return ((string)(this["OutputOrientation"]));
             }
             set {
                 this["OutputOrientation"] = value;
@@ -134,9 +134,9 @@ namespace AtPulso.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("60")]
-        public int ChartDotsCount {
+        public string ChartDotsCount {
             get {
-                return ((int)(this["ChartDotsCount"]));
+                return ((string)(this["ChartDotsCount"]));
             }
             set {
                 this["ChartDotsCount"] = value;
@@ -146,9 +146,9 @@ namespace AtPulso.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("300")]
-        public int ChartWidth {
+        public string ChartWidth {
             get {
-                return ((int)(this["ChartWidth"]));
+                return ((string)(this["ChartWidth"]));
             }
             set {
                 this["ChartWidth"] = value;
@@ -182,9 +182,9 @@ namespace AtPulso.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public decimal AnimationSpeedMultiplier {
+        public string AnimationSpeedMultiplier {
             get {
-                return ((decimal)(this["AnimationSpeedMultiplier"]));
+                return ((string)(this["AnimationSpeedMultiplier"]));
             }
             set {
                 this["AnimationSpeedMultiplier"] = value;
@@ -218,9 +218,9 @@ namespace AtPulso.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public decimal ChartLineThickness {
+        public string ChartLineThickness {
             get {
-                return ((decimal)(this["ChartLineThickness"]));
+                return ((string)(this["ChartLineThickness"]));
             }
             set {
                 this["ChartLineThickness"] = value;
@@ -230,9 +230,9 @@ namespace AtPulso.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool ChartLineSmooth {
+        public string ChartLineSmooth {
             get {
-                return ((bool)(this["ChartLineSmooth"]));
+                return ((string)(this["ChartLineSmooth"]));
             }
             set {
                 this["ChartLineSmooth"] = value;
@@ -242,9 +242,9 @@ namespace AtPulso.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool HideAtStart {
+        public string HideAtStart {
             get {
-                return ((bool)(this["HideAtStart"]));
+                return ((string)(this["HideAtStart"]));
             }
             set {
                 this["HideAtStart"] = value;
@@ -254,9 +254,9 @@ namespace AtPulso.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool SoundAlert {
+        public string SoundAlert {
             get {
-                return ((bool)(this["SoundAlert"]));
+                return ((string)(this["SoundAlert"]));
             }
             set {
                 this["SoundAlert"] = value;
@@ -266,9 +266,9 @@ namespace AtPulso.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool HeartRateThresholdChange {
+        public string HeartRateThresholdChange {
             get {
-                return ((bool)(this["HeartRateThresholdChange"]));
+                return ((string)(this["HeartRateThresholdChange"]));
             }
             set {
                 this["HeartRateThresholdChange"] = value;
@@ -290,12 +290,60 @@ namespace AtPulso.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("120")]
-        public decimal HeartRateThreshold {
+        public string HeartRateThreshold {
             get {
-                return ((decimal)(this["HeartRateThreshold"]));
+                return ((string)(this["HeartRateThreshold"]));
             }
             set {
                 this["HeartRateThreshold"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("4")]
+        public string PreviewBackgroundColor {
+            get {
+                return ((string)(this["PreviewBackgroundColor"]));
+            }
+            set {
+                this["PreviewBackgroundColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public string PreviewAutostart {
+            get {
+                return ((string)(this["PreviewAutostart"]));
+            }
+            set {
+                this["PreviewAutostart"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("black_border")]
+        public string HeartRateStyle {
+            get {
+                return ((string)(this["HeartRateStyle"]));
+            }
+            set {
+                this["HeartRateStyle"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        public string HeartRateFontSize {
+            get {
+                return ((string)(this["HeartRateFontSize"]));
+            }
+            set {
+                this["HeartRateFontSize"] = value;
             }
         }
     }

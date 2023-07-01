@@ -61,7 +61,7 @@ namespace AtPulso.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на &lt;video id=&quot;video&quot; width=&quot;150&quot; height=&quot;150&quot; style=&quot;position:absolute; left:{video_left}px; {animation_filter}&quot; loop autoplay muted&gt;
+        ///   Ищет локализованную строку, похожую на &lt;video id=&quot;video&quot; width=&quot;150&quot; height=&quot;150&quot; class=&quot;animation&quot; loop autoplay muted&gt;
         /// &lt;source src=&quot;http://localhost:{port}/video&quot; type=&apos;video/webm&apos;&gt;
         ///&lt;/video&gt;.
         /// </summary>
@@ -97,6 +97,31 @@ namespace AtPulso.Properties {
         internal static string ChartJsHeader {
             get {
                 return ResourceManager.GetString("ChartJsHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на &lt;style&gt;
+        ///.chess {
+        ///	background-image: linear-gradient(45deg, #888 25%, transparent 25%), linear-gradient(-45deg, #888 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #888 75%), linear-gradient(-45deg, transparent 75%, #888 75%);
+        ///	background-size: 20px 20px;
+        ///	background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+        ///	background-color: #aaa !important;
+        ///}
+        ///
+        ///.animation {
+        ///	position:absolute; 
+        ///	left:{video_left}px; 
+        ///	{animation_filter}
+        ///}
+        ///
+        ///.hr_wrapper {
+        ///	left: {left_big_number}px;
+        ///	width [остаток строки не уместился]&quot;;.
+        /// </summary>
+        internal static string Css {
+            get {
+                return ResourceManager.GetString("Css", resourceCulture);
             }
         }
         
@@ -233,22 +258,11 @@ namespace AtPulso.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на &lt;span id=&quot;nowPulse&quot; style=&quot;
-        ///	left: {left_big_number}px;
-        ///    line-height: 150px;
-        ///    vertical-align: middle;
-        ///    font-size: 50px;
-        ///	color: {color_big_number};
-        ///    display: inline-block;
-        ///    top: 0;
-        ///    position: absolute;
-        ///	text-align: center;
-        ///	width: 100px;
-        ///	text-shadow:
-        ///		0 0 7px {color_big_number},
-        ///		0 0 10px {color_big_number},
-        ///		0 0 21px {color_big_number};
-        ///&quot;&gt;&lt;/span&gt;.
+        ///   Ищет локализованную строку, похожую на &lt;div class=&quot;hr_wrapper&quot;&gt;
+        ///	&lt;svg viewBox=&quot;0 0 150 150&quot; class=&quot;hr_svg&quot;&gt;
+        ///		&lt;text id=&quot;nowPulse&quot; class=&quot;hr {hr_style}&quot; x=&quot;75&quot; y=&quot;{hr_fontbottom}&quot; text-anchor=&quot;middle&quot;&gt;50&lt;/text&gt;
+        ///	&lt;/svg&gt;
+        ///&lt;/div&gt;.
         /// </summary>
         internal static string HR {
             get {
@@ -259,16 +273,8 @@ namespace AtPulso.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на &lt;html&gt;
         ///&lt;head&gt;
+        ///{style_header}
         ///{chart_header}
-        ///&lt;style&gt;
-        ///.hr_high {
-        ///	color: {hr_threshold_color} !important;
-        ///	text-shadow:
-        ///		0 0 7px {hr_threshold_color},
-        ///		0 0 10px {hr_threshold_color},
-        ///		0 0 21px {hr_threshold_color} !important;
-        ///}
-        ///&lt;/style&gt;
         ///&lt;/head&gt;
         ///&lt;body style=&quot;background-color: rgba(0, 0, 0, 0); margin: 0px auto; overflow: hidden; font-family: {font_family}&quot;&gt;
         ///{main_container}

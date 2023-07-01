@@ -2,22 +2,22 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AtPulso.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="AutoConnectAtStart" Type="System.Boolean" Scope="User">
+    <Setting Name="AutoConnectAtStart" Type="System.String" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="RetryConnectWhenFailed" Type="System.Boolean" Scope="User">
+    <Setting Name="RetryConnectWhenFailed" Type="System.String" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="AutoStartServerWhenConnected" Type="System.Boolean" Scope="User">
+    <Setting Name="AutoStartServerWhenConnected" Type="System.String" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="ServerPort" Type="System.Int32" Scope="User">
+    <Setting Name="ServerPort" Type="System.String" Scope="User">
       <Value Profile="(Default)">10110</Value>
     </Setting>
-    <Setting Name="OutputMode" Type="System.Int32" Scope="User">
+    <Setting Name="OutputMode" Type="System.String" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="OutputOrientation" Type="System.Int32" Scope="User">
+    <Setting Name="OutputOrientation" Type="System.String" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="HeartRateColor" Type="System.String" Scope="User">
@@ -29,10 +29,10 @@
     <Setting Name="MinMaxColor" Type="System.String" Scope="User">
       <Value Profile="(Default)">#FF0000</Value>
     </Setting>
-    <Setting Name="ChartDotsCount" Type="System.Int32" Scope="User">
+    <Setting Name="ChartDotsCount" Type="System.String" Scope="User">
       <Value Profile="(Default)">60</Value>
     </Setting>
-    <Setting Name="ChartWidth" Type="System.Int32" Scope="User">
+    <Setting Name="ChartWidth" Type="System.String" Scope="User">
       <Value Profile="(Default)">300</Value>
     </Setting>
     <Setting Name="AnimationPath" Type="System.String" Scope="User">
@@ -41,7 +41,7 @@
     <Setting Name="BleDeviceId" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="AnimationSpeedMultiplier" Type="System.Decimal" Scope="User">
+    <Setting Name="AnimationSpeedMultiplier" Type="System.String" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="AnimationFilter" Type="System.String" Scope="User">
@@ -50,26 +50,38 @@
     <Setting Name="FontFamily" Type="System.String" Scope="User">
       <Value Profile="(Default)">cursive</Value>
     </Setting>
-    <Setting Name="ChartLineThickness" Type="System.Decimal" Scope="User">
+    <Setting Name="ChartLineThickness" Type="System.String" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="ChartLineSmooth" Type="System.Boolean" Scope="User">
+    <Setting Name="ChartLineSmooth" Type="System.String" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="HideAtStart" Type="System.Boolean" Scope="User">
+    <Setting Name="HideAtStart" Type="System.String" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="SoundAlert" Type="System.Boolean" Scope="User">
+    <Setting Name="SoundAlert" Type="System.String" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="HeartRateThresholdChange" Type="System.Boolean" Scope="User">
+    <Setting Name="HeartRateThresholdChange" Type="System.String" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="HeartRateThresholdColor" Type="System.String" Scope="User">
       <Value Profile="(Default)">#FF0000</Value>
     </Setting>
-    <Setting Name="HeartRateThreshold" Type="System.Decimal" Scope="User">
+    <Setting Name="HeartRateThreshold" Type="System.String" Scope="User">
       <Value Profile="(Default)">120</Value>
+    </Setting>
+    <Setting Name="PreviewBackgroundColor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">4</Value>
+    </Setting>
+    <Setting Name="PreviewAutostart" Type="System.String" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="HeartRateStyle" Type="System.String" Scope="User">
+      <Value Profile="(Default)">black_border</Value>
+    </Setting>
+    <Setting Name="HeartRateFontSize" Type="System.String" Scope="User">
+      <Value Profile="(Default)">50</Value>
     </Setting>
   </Settings>
 </SettingsFile>
