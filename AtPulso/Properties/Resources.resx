@@ -265,7 +265,7 @@
 						stepSize: 1,
 						font: {
 							size: 20,
-							family: '{font_family}'
+							family: "{font_family}"
 						},
 						color: "{color_small_numbers}",
 					},
@@ -382,7 +382,8 @@
 						maxTicksLimit: 2,
 						stepSize: 1,
 						font: {
-							size: 20
+							size: 20,
+							family: "{font_family}"
 						},
 						color: "{color_small_numbers}",
 					},

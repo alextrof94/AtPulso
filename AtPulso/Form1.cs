@@ -24,7 +24,7 @@ namespace AtPulso
 {
 	public partial class Form1 : Form
 	{
-		private string version = "1.4";
+		private string version = "1.5";
 
 		public ObservableCollection<WatcherDevice> devices = new ObservableCollection<WatcherDevice>();
 		private HeartRateMonitor _heartRateMonitor = new HeartRateMonitor();
@@ -49,9 +49,13 @@ namespace AtPulso
 
 		private void Log(string str)
 		{
-			lbLog.Invoke((MethodInvoker) delegate {
-				lbLog.Items.Insert(0, str);
-			});
+			try
+			{
+				lbLog.Invoke((MethodInvoker)delegate
+				{
+					lbLog.Items.Insert(0, str);
+				});
+			} catch { }
 		}
 
 		private void RecalculateObsWidth()
@@ -66,6 +70,27 @@ namespace AtPulso
 			}
 			tbObsWidth.Text = width.ToString();
 			fp.width = width;
+		}
+
+		private string SelectColor(TextBox tb, PictureBox pb, string old)
+		{
+			if (cdSelectColor.ShowDialog() == DialogResult.OK)
+			{
+				byte[] input = new byte[] { cdSelectColor.Color.R, cdSelectColor.Color.G, cdSelectColor.Color.B };
+				string output = "#" + BitConverter.ToString(input).Replace("-", "");
+				tb.Text = output;
+				pb.BackColor = cdSelectColor.Color;
+				return output;
+			}
+			return old;
+		}
+
+		private void LoadColor(TextBox tb, PictureBox pb, string color)
+		{
+			tb.Text = color;
+			var colorHex = "FF" + color.Substring(1);
+			var col = Color.FromArgb(int.Parse(colorHex, System.Globalization.NumberStyles.HexNumber));
+			pb.BackColor = col;
 		}
 
 		private void UpdateUiBySettings()
@@ -87,9 +112,9 @@ namespace AtPulso
 				cbOutputOrientation.SelectedIndex = int.Parse(Properties.Settings.Default.OutputOrientation);
 				tbFontFamily.Text = Properties.Settings.Default.FontFamily;
 
-				tbHeartRateColor.Text = Properties.Settings.Default.HeartRateColor;
+				LoadColor(tbHeartRateColor, pbHeartRateColor, Properties.Settings.Default.HeartRateColor);
 				nudHeartRateFontSize.Value = decimal.Parse(Properties.Settings.Default.HeartRateFontSize.Replace(".", ","));
-				tbHeartRateThresholdColor.Text = Properties.Settings.Default.HeartRateThresholdColor;
+				LoadColor(tbHeartRateThresholdColor, pbHeartRateThresholdColor, Properties.Settings.Default.HeartRateThresholdColor);
 				cbHeartRateThresholdChange.Checked = bool.Parse(Properties.Settings.Default.HeartRateThresholdChange);
 				nudHeartRateThreshold.Value = decimal.Parse(Properties.Settings.Default.HeartRateThreshold.Replace(".", ","));
 				switch (Properties.Settings.Default.HeartRateStyle)
@@ -102,8 +127,8 @@ namespace AtPulso
 
 				nudChartDotsCount.Value = decimal.Parse(Properties.Settings.Default.ChartDotsCount.Replace(".", ","));
 				nudChartWidth.Value = decimal.Parse(Properties.Settings.Default.ChartWidth.Replace(".", ","));
-				tbLineColor.Text = Properties.Settings.Default.LineColor;
-				tbMinMaxColor.Text = Properties.Settings.Default.MinMaxColor;
+				LoadColor(tbLineColor, pbLineColor, Properties.Settings.Default.LineColor);
+				LoadColor(tbMinMaxColor, pbMinMaxColor, Properties.Settings.Default.MinMaxColor);
 				nudChartLineThickness.Value = decimal.Parse(Properties.Settings.Default.ChartLineThickness.Replace(".", ","));
 				cbChartLineSmooth.Checked = bool.Parse(Properties.Settings.Default.ChartLineSmooth);
 
@@ -213,10 +238,10 @@ namespace AtPulso
 			RecalculateObsWidth();
 			switch (cbOutputMode.SelectedIndex)
 			{
-				case 0: gbChartSettings.Enabled = true; gbHeartRateSettings.Enabled = true; gbAnimationSettings.Enabled = true; break; // All
-				case 1: gbChartSettings.Enabled = true; gbHeartRateSettings.Enabled = true; gbAnimationSettings.Enabled = false; break; // Chart + HR
-				case 2: gbChartSettings.Enabled = false; gbHeartRateSettings.Enabled = true; gbAnimationSettings.Enabled = true; break; // HR + Anim
-				case 3: gbChartSettings.Enabled = false; gbHeartRateSettings.Enabled = true; gbAnimationSettings.Enabled = false; break; // HR
+				case 0: tabChart.Enabled = true;  tabHeartRate.Enabled = true; tabAnimation.Enabled = true; break; // All
+				case 1: tabChart.Enabled = true;  tabHeartRate.Enabled = true; tabAnimation.Enabled = false; break; // Chart + HR
+				case 2: tabChart.Enabled = false; tabHeartRate.Enabled = true; tabAnimation.Enabled = true; break; // HR + Anim
+				case 3: tabChart.Enabled = false; tabHeartRate.Enabled = true; tabAnimation.Enabled = false; break; // HR
 			}
 		}
 
@@ -239,6 +264,7 @@ namespace AtPulso
 				tbFontFamily_TextChangedByCode = true;
 				tbFontFamily.Text = "cursive";
 			}
+			tbFontFamily.Text = tbFontFamily.Text.Replace("\"", "'");
 			Properties.Settings.Default.FontFamily = tbFontFamily.Text;
 			Properties.Settings.Default.Save();
 		}
@@ -264,26 +290,14 @@ namespace AtPulso
 
 		private void buLineColor_Click(object sender, EventArgs e)
 		{
-			if (cdSelectColor.ShowDialog() == DialogResult.OK)
-			{
-				byte[] input = new byte[] { cdSelectColor.Color.R, cdSelectColor.Color.G, cdSelectColor.Color.B };
-				string output = "#" + BitConverter.ToString(input).Replace("-", "");
-				tbLineColor.Text = output;
-				Properties.Settings.Default.LineColor = output;
-				Properties.Settings.Default.Save();
-			}			
+			Properties.Settings.Default.LineColor = SelectColor(tbLineColor, pbLineColor, Properties.Settings.Default.LineColor);
+			Properties.Settings.Default.Save();
 		}
 
 		private void buMinMaxColor_Click(object sender, EventArgs e)
 		{
-			if (cdSelectColor.ShowDialog() == DialogResult.OK)
-			{
-				byte[] input = new byte[] { cdSelectColor.Color.R, cdSelectColor.Color.G, cdSelectColor.Color.B };
-				string output = "#" + BitConverter.ToString(input).Replace("-", "");
-				tbMinMaxColor.Text = output;
-				Properties.Settings.Default.MinMaxColor = output;
-				Properties.Settings.Default.Save();
-			}
+			Properties.Settings.Default.MinMaxColor = SelectColor(tbMinMaxColor, pbMinMaxColor, Properties.Settings.Default.MinMaxColor);
+			Properties.Settings.Default.Save();
 		}
 
 		private void nudChartLineWidth_ValueChanged(object sender, EventArgs e)
@@ -298,17 +312,10 @@ namespace AtPulso
 			Properties.Settings.Default.Save();
 		}
 
-
 		private void buHeartRateColor_Click(object sender, EventArgs e)
 		{
-			if (cdSelectColor.ShowDialog() == DialogResult.OK)
-			{
-				byte[] input = new byte[] { cdSelectColor.Color.R, cdSelectColor.Color.G, cdSelectColor.Color.B };
-				string output = "#" + BitConverter.ToString(input).Replace("-", "");
-				tbHeartRateColor.Text = output;
-				Properties.Settings.Default.HeartRateColor = output;
-				Properties.Settings.Default.Save();
-			}
+			Properties.Settings.Default.HeartRateColor = SelectColor(tbHeartRateColor, pbHeartRateColor, Properties.Settings.Default.HeartRateColor);
+			Properties.Settings.Default.Save();
 		}
 
 		private void cbHeartRateOutlineStyle_SelectedIndexChanged(object sender, EventArgs e)
@@ -343,14 +350,8 @@ namespace AtPulso
 
 		private void buHeartRateThresholdColor_Click(object sender, EventArgs e)
 		{
-			if (cdSelectColor.ShowDialog() == DialogResult.OK)
-			{
-				byte[] input = new byte[] { cdSelectColor.Color.R, cdSelectColor.Color.G, cdSelectColor.Color.B };
-				string output = "#" + BitConverter.ToString(input).Replace("-", "");
-				tbHeartRateThresholdColor.Text = output;
-				Properties.Settings.Default.HeartRateThresholdColor = output;
-				Properties.Settings.Default.Save();
-			}
+			Properties.Settings.Default.HeartRateThresholdColor = SelectColor(tbHeartRateThresholdColor, pbHeartRateThresholdColor, Properties.Settings.Default.HeartRateThresholdColor);
+			Properties.Settings.Default.Save();
 		}
 
 
