@@ -15,9 +15,14 @@ It can show:
 
 UI settings updates on the fly by reload page in browser (or widget in OBS).
 
-![Preview2](https://github.com/alextrof94/AtPulso/blob/main/images/screenshot.jpg)
+![Preview1](https://github.com/alextrof94/AtPulso/blob/main/images/preview.gif)
 
-![Settings](https://github.com/alextrof94/AtPulso/blob/main/images/main.jpg)
+![Main](https://github.com/alextrof94/AtPulso/blob/main/images/main.png)
+![Settings](https://github.com/alextrof94/AtPulso/blob/main/images/settings.png)
+![Output](https://github.com/alextrof94/AtPulso/blob/main/images/output.png)
+![HeartRate](https://github.com/alextrof94/AtPulso/blob/main/images/hr.png)
+![Chart](https://github.com/alextrof94/AtPulso/blob/main/images/chart.png)
+![Animation](https://github.com/alextrof94/AtPulso/blob/main/images/animation.png)
 
 
 ## Animation
@@ -25,7 +30,6 @@ For animation you need to select webm video with length of 1 sec with 1 "beat" (
 
 You can download animations from [animations link](https://github.com/alextrof94/AtPulso/tree/main/animations) (black - uses for filters, part like "090" in name is required speed-multiplier setting) or create your own and select it.
 
-![Preview1](https://github.com/alextrof94/AtPulso/blob/main/images/preview.gif)
 
 You also can add CSS filter for animation to change color of animation. For example change color from black to red:
 ```
