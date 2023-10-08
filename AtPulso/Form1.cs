@@ -19,6 +19,7 @@ using CefSharp;
 using CefSharp.WinForms;
 using Newtonsoft.Json;
 using System.Configuration;
+using System.Diagnostics;
 
 namespace AtPulso
 {
@@ -151,7 +152,7 @@ namespace AtPulso
 
 		private void Form1_Shown(object sender, EventArgs e)
 		{
-			this.Text = String.Format("AtPulso by GoodVrGames v{0}", version);
+			this.Text = String.Format("AtPulso by GoodVrGames aka alextrof94 v{0}", version);
 			UpdateUiBySettings(); 
 
 			// we should always monitor the connection status
@@ -452,7 +453,7 @@ namespace AtPulso
 						LastBpm = 60;
 					else
 						LastBpm = e.BeatsPerMinute;
-					this.Text = String.Format("{1} bpm | AtPulso by GoodVrGames v{0}", version, LastBpm);
+					this.Text = String.Format("{1} bpm | AtPulso by GoodVrGames aka alextrof94 v{0}", version, LastBpm);
 				});
 			}
 			catch (Exception ex) { 
@@ -500,7 +501,7 @@ namespace AtPulso
                 this.Invoke((MethodInvoker)delegate {
 					TbDeviceStatus.Text = "Disconnected";
 					TbDeviceBattery.Text = "--";
-					this.Text = "AtPulso by GoodVrGames";
+					this.Text = "AtPulso by GoodVrGames aka alextrof94";
 					Log("Disconnected");
 
 					cbTestMode.Checked = false;
@@ -1054,7 +1055,23 @@ namespace AtPulso
 				avgValue /= valuesForAvg.Count;
             }
 
-            BuCalculateMultiplier.Text = Math.Round(value, 2).ToString() + " | " + Math.Round(avgValue, 2).ToString();
+            BuCalculateMultiplier.Text = Math.Round(value, 2).ToString() + " | filtered: " + Math.Round(avgValue, 2).ToString();
+        }
+
+        private void DonateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenBrowser("https://www.donationalerts.com/r/goodvrgames");
+        }
+
+        private void OpenBrowser(string url)
+        {
+            string args = $"/c start \"\" \"{url}\"";
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = "cmd",
+                Arguments = args,
+                UseShellExecute = true
+            });
         }
     }
 }

@@ -32,7 +32,6 @@ namespace AtPulso
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cbTestMode = new System.Windows.Forms.CheckBox();
             this.TbDeviceName = new System.Windows.Forms.TextBox();
             this.TbDeviceBattery = new System.Windows.Forms.TextBox();
             this.TbDeviceStatus = new System.Windows.Forms.TextBox();
@@ -103,6 +102,7 @@ namespace AtPulso
             this.NudServerPort = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.TbVolume = new System.Windows.Forms.TrackBar();
             this.CbAutoShowPreview = new System.Windows.Forms.CheckBox();
             this.CbSoundAlert = new System.Windows.Forms.CheckBox();
             this.CbHideAtStart = new System.Windows.Forms.CheckBox();
@@ -134,6 +134,7 @@ namespace AtPulso
             this.gitHubToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myTwitchChannelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addSuggestionsOrIssueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dONATEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.TabMain = new System.Windows.Forms.TabPage();
             this.TabSettings = new System.Windows.Forms.TabPage();
@@ -141,7 +142,7 @@ namespace AtPulso
             this.TabHeartRate = new System.Windows.Forms.TabPage();
             this.TabChart = new System.Windows.Forms.TabPage();
             this.TabAnimation = new System.Windows.Forms.TabPage();
-            this.TbVolume = new System.Windows.Forms.TrackBar();
+            this.cbTestMode = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -161,6 +162,7 @@ namespace AtPulso
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NudServerPort)).BeginInit();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TbVolume)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.msMenu.SuspendLayout();
             this.tabControl.SuspendLayout();
@@ -170,14 +172,12 @@ namespace AtPulso
             this.TabHeartRate.SuspendLayout();
             this.TabChart.SuspendLayout();
             this.TabAnimation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TbVolume)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.cbTestMode);
             this.groupBox1.Controls.Add(this.TbDeviceName);
             this.groupBox1.Controls.Add(this.TbDeviceBattery);
             this.groupBox1.Controls.Add(this.TbDeviceStatus);
@@ -193,17 +193,6 @@ namespace AtPulso
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Device Info";
-            // 
-            // cbTestMode
-            // 
-            this.cbTestMode.AutoSize = true;
-            this.cbTestMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbTestMode.Location = new System.Drawing.Point(9, 123);
-            this.cbTestMode.Name = "cbTestMode";
-            this.cbTestMode.Size = new System.Drawing.Size(169, 17);
-            this.cbTestMode.TabIndex = 12;
-            this.cbTestMode.Text = "Test Mode (60 bpm for output)";
-            this.cbTestMode.UseVisualStyleBackColor = true;
             // 
             // TbDeviceName
             // 
@@ -684,6 +673,7 @@ namespace AtPulso
             this.gbAnimationSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbAnimationSettings.Controls.Add(this.cbTestMode);
             this.gbAnimationSettings.Controls.Add(this.BuCalculateMultiplier);
             this.gbAnimationSettings.Controls.Add(this.BuOpenFilterPage);
             this.gbAnimationSettings.Controls.Add(this.TbAnimFilter);
@@ -704,12 +694,14 @@ namespace AtPulso
             // 
             // BuCalculateMultiplier
             // 
-            this.BuCalculateMultiplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BuCalculateMultiplier.Location = new System.Drawing.Point(156, 85);
+            this.BuCalculateMultiplier.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BuCalculateMultiplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BuCalculateMultiplier.Location = new System.Drawing.Point(9, 170);
             this.BuCalculateMultiplier.Name = "BuCalculateMultiplier";
-            this.BuCalculateMultiplier.Size = new System.Drawing.Size(205, 20);
+            this.BuCalculateMultiplier.Size = new System.Drawing.Size(426, 23);
             this.BuCalculateMultiplier.TabIndex = 19;
-            this.BuCalculateMultiplier.Text = "Press 5 times to calculate Multiplier";
+            this.BuCalculateMultiplier.Text = "Press 5 times to calculate Multiplier (15+ for filtered)";
             this.BuCalculateMultiplier.UseVisualStyleBackColor = true;
             this.BuCalculateMultiplier.Click += new System.EventHandler(this.BuCalculateMultiplier_Click);
             // 
@@ -1143,6 +1135,20 @@ namespace AtPulso
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "App Settings";
             // 
+            // TbVolume
+            // 
+            this.TbVolume.AutoSize = false;
+            this.TbVolume.LargeChange = 10;
+            this.TbVolume.Location = new System.Drawing.Point(188, 134);
+            this.TbVolume.Maximum = 100;
+            this.TbVolume.Minimum = 10;
+            this.TbVolume.Name = "TbVolume";
+            this.TbVolume.Size = new System.Drawing.Size(104, 17);
+            this.TbVolume.TabIndex = 6;
+            this.TbVolume.TickFrequency = 10;
+            this.TbVolume.Value = 10;
+            this.TbVolume.Scroll += new System.EventHandler(this.TbVolume_Scroll);
+            // 
             // CbAutoShowPreview
             // 
             this.CbAutoShowPreview.AutoSize = true;
@@ -1287,7 +1293,8 @@ namespace AtPulso
             this.deviceToolStripMenuItem,
             this.serverToolStripMenuItem,
             this.showPreviewWindowToolStripMenuItem,
-            this.infoToolStripMenuItem});
+            this.infoToolStripMenuItem,
+            this.dONATEToolStripMenuItem});
             this.msMenu.Location = new System.Drawing.Point(0, 0);
             this.msMenu.Name = "msMenu";
             this.msMenu.Size = new System.Drawing.Size(482, 24);
@@ -1338,21 +1345,21 @@ namespace AtPulso
             // connectToolStripMenuItem
             // 
             this.connectToolStripMenuItem.Name = "connectToolStripMenuItem";
-            this.connectToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.connectToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.connectToolStripMenuItem.Text = "Connect";
             this.connectToolStripMenuItem.Click += new System.EventHandler(this.ConnectToolStripMenuItem_Click);
             // 
             // getDeviceInfoToolStripMenuItem
             // 
             this.getDeviceInfoToolStripMenuItem.Name = "getDeviceInfoToolStripMenuItem";
-            this.getDeviceInfoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.getDeviceInfoToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.getDeviceInfoToolStripMenuItem.Text = "Get Device Info";
             this.getDeviceInfoToolStripMenuItem.Click += new System.EventHandler(this.GetDeviceInfoToolStripMenuItem_Click);
             // 
             // disconnectToolStripMenuItem
             // 
             this.disconnectToolStripMenuItem.Name = "disconnectToolStripMenuItem";
-            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.disconnectToolStripMenuItem.Text = "Disconnect";
             this.disconnectToolStripMenuItem.Click += new System.EventHandler(this.DisconnectToolStripMenuItem_Click);
             // 
@@ -1416,6 +1423,14 @@ namespace AtPulso
             this.addSuggestionsOrIssueToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.addSuggestionsOrIssueToolStripMenuItem.Text = "Add Suggestions or Issue";
             this.addSuggestionsOrIssueToolStripMenuItem.Click += new System.EventHandler(this.AddSuggestionsOrIssueToolStripMenuItem_Click);
+            // 
+            // dONATEToolStripMenuItem
+            // 
+            this.dONATEToolStripMenuItem.BackColor = System.Drawing.Color.LightGreen;
+            this.dONATEToolStripMenuItem.Name = "dONATEToolStripMenuItem";
+            this.dONATEToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.dONATEToolStripMenuItem.Text = "DONATE";
+            this.dONATEToolStripMenuItem.Click += new System.EventHandler(this.DonateToolStripMenuItem_Click);
             // 
             // tabControl
             // 
@@ -1497,19 +1512,16 @@ namespace AtPulso
             this.TabAnimation.Text = "Animation";
             this.TabAnimation.UseVisualStyleBackColor = true;
             // 
-            // TbVolume
+            // cbTestMode
             // 
-            this.TbVolume.AutoSize = false;
-            this.TbVolume.LargeChange = 10;
-            this.TbVolume.Location = new System.Drawing.Point(188, 134);
-            this.TbVolume.Maximum = 100;
-            this.TbVolume.Minimum = 10;
-            this.TbVolume.Name = "TbVolume";
-            this.TbVolume.Size = new System.Drawing.Size(104, 17);
-            this.TbVolume.TabIndex = 6;
-            this.TbVolume.TickFrequency = 10;
-            this.TbVolume.Value = 10;
-            this.TbVolume.Scroll += new System.EventHandler(this.TbVolume_Scroll);
+            this.cbTestMode.AutoSize = true;
+            this.cbTestMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbTestMode.Location = new System.Drawing.Point(9, 147);
+            this.cbTestMode.Name = "cbTestMode";
+            this.cbTestMode.Size = new System.Drawing.Size(169, 17);
+            this.cbTestMode.TabIndex = 20;
+            this.cbTestMode.Text = "Test Mode (60 bpm for output)";
+            this.cbTestMode.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -1554,6 +1566,7 @@ namespace AtPulso
             ((System.ComponentModel.ISupportInitialize)(this.NudServerPort)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TbVolume)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.msMenu.ResumeLayout(false);
@@ -1565,7 +1578,6 @@ namespace AtPulso
             this.TabHeartRate.ResumeLayout(false);
             this.TabChart.ResumeLayout(false);
             this.TabAnimation.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.TbVolume)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1628,7 +1640,6 @@ namespace AtPulso
 		private System.Windows.Forms.NotifyIcon niTray;
 		private System.Windows.Forms.Timer tiClose;
 		private System.Windows.Forms.Timer tiHideOnStart;
-		private System.Windows.Forms.CheckBox cbTestMode;
 		private System.Windows.Forms.NumericUpDown NudAnimSpeedMultiplier;
 		private System.Windows.Forms.Label label17;
 		private System.Windows.Forms.Label label18;
@@ -1684,6 +1695,8 @@ namespace AtPulso
 		private System.Windows.Forms.PictureBox PbHeartRateThresholdColor;
         private System.Windows.Forms.Button BuCalculateMultiplier;
         private System.Windows.Forms.TrackBar TbVolume;
+        private System.Windows.Forms.ToolStripMenuItem dONATEToolStripMenuItem;
+        private System.Windows.Forms.CheckBox cbTestMode;
     }
 }
 
